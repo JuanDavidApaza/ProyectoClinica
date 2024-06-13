@@ -9,7 +9,7 @@ public class Conexion {
     //Manera formal, es definiendo cada atributo de la base de datos
     private static final String JDBC_URL = "jdbc:mysql://b7efgmkpw5fdp5959znu-mysql.services.clever-cloud.com:3306/clinica";
     private static final String JDBC_USER = "ug2zfbqc8kgapoey";
-    private static final String JDBC_PASSWORD = "DMrJjuandnadsadasas";
+    private static final String JDBC_PASSWORD = "DMrJ2K4e3Xdy4xZce4vc";
 
     //Para dar la conexion
     public static Connection getConnection() throws SQLException {
