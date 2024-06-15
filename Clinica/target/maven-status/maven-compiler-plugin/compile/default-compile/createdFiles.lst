@@ -2,6 +2,7 @@ Vista\Login.class
 Modelo\Pago.class
 Conexion\Conexion.class
 Modelo\Cita.class
+Controlador\CtrlPrincipal.class
 Modelo\CitaTrabajador.class
 Modelo\HistorialMedico.class
 Modelo\HorarioDoctor.class
