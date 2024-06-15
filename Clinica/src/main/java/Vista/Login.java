@@ -54,6 +54,7 @@ public class Login extends javax.swing.JFrame {
         btnCancelar = new javax.swing.JButton();
         txtuser = new javax.swing.JTextField();
         txtpassword = new javax.swing.JPasswordField();
+        jLabel2 = new javax.swing.JLabel();
 
         javax.swing.GroupLayout jDesktopPane1Layout = new javax.swing.GroupLayout(jDesktopPane1);
         jDesktopPane1.setLayout(jDesktopPane1Layout);
@@ -72,7 +73,7 @@ public class Login extends javax.swing.JFrame {
 
         jLabel1.setFont(new java.awt.Font("Nirmala UI", 1, 36)); // NOI18N
         jLabel1.setText("LOGIN");
-        panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 140, 158, 34));
+        panel.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 160, 158, 34));
 
         jLabel3.setFont(new java.awt.Font("Nirmala UI", 1, 18)); // NOI18N
         jLabel3.setText("Usuario:");
@@ -97,6 +98,9 @@ public class Login extends javax.swing.JFrame {
         panel.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 390, 130, 40));
         panel.add(txtuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 210, -1));
         panel.add(txtpassword, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 300, 210, -1));
+
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/logoclinica (1).png"))); // NOI18N
+        panel.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(120, 20, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -160,6 +164,7 @@ public class Login extends javax.swing.JFrame {
     public javax.swing.JButton btnIngresar;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel panel;

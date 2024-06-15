@@ -1,14 +1,17 @@
 Vista\Login.class
+Vista\VentanaTrabajador.class
 Modelo\Pago.class
 Conexion\Conexion.class
 Modelo\Cita.class
 Controlador\CtrlPrincipal.class
 Modelo\CitaTrabajador.class
 Modelo\HistorialMedico.class
+Vista\VentanaTrabajador$1.class
 Modelo\HorarioDoctor.class
 Modelo\Paciente.class
 Modelo\Doctor.class
 Vista\Login$1.class
+Vista\VentanaTrabajador$2.class
 Modelo\Persona.class
 Vista\Login$2.class
 Modelo\Trabajador.class
