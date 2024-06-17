@@ -240,14 +240,14 @@ public class VentanaPacienteRegistrado extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBuscarPacienteDNI;
-    private javax.swing.JButton btnHistorialMedico;
-    private javax.swing.JButton btnIrPaciente;
-    private javax.swing.JButton btnIrPago;
-    private javax.swing.JButton btnModificarDatos;
-    private javax.swing.JButton btnRegistrarCita;
+    public javax.swing.JButton btnBuscarPacienteDNI;
+    public javax.swing.JButton btnHistorialMedico;
+    public javax.swing.JButton btnIrPaciente;
+    public javax.swing.JButton btnIrPago;
+    public javax.swing.JButton btnModificarDatos;
+    public javax.swing.JButton btnRegistrarCita;
     private javax.swing.JTextField cajaDni;
-    private javax.swing.JLabel etiquetaNombrePaciente;
+    public javax.swing.JLabel etiquetaNombrePaciente;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

@@ -201,11 +201,11 @@ public class VentanaTrabajador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnNuevoPaciente;
-    private javax.swing.JButton btnPacienteInvit;
-    private javax.swing.JButton btnPacienteReg;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JButton btnNuevoPaciente;
+    public javax.swing.JButton btnPacienteInvit;
+    public javax.swing.JButton btnPacienteReg;
+    public javax.swing.JButton jButton1;
+    public javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
