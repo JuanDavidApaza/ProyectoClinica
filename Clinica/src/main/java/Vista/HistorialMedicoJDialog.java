@@ -28,7 +28,7 @@ public class HistorialMedicoJDialog extends javax.swing.JDialog {
         jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tablaHistorialMedico = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         etiquetaNombrePaciente = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -40,7 +40,7 @@ public class HistorialMedicoJDialog extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tablaHistorialMedico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -59,7 +59,7 @@ public class HistorialMedicoJDialog extends javax.swing.JDialog {
                 return canEdit [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tablaHistorialMedico);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
         jLabel1.setText("Historial");
@@ -209,6 +209,6 @@ public class HistorialMedicoJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     public javax.swing.JScrollPane jScrollPane1;
-    public javax.swing.JTable jTable1;
+    public javax.swing.JTable tablaHistorialMedico;
     // End of variables declaration//GEN-END:variables
 }
