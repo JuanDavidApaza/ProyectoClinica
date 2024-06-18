@@ -6,8 +6,8 @@ public class Paciente extends Persona {
 
     public Paciente() {}
 
-    public Paciente(String dni, String nombre, String apellido, String direccion, String telefono, String email, int idPaciente, String tipo) {
-        super(dni, nombre, apellido, direccion, telefono, email);
+    public Paciente(String dni, String nombre, String apellido, String direccion, String telefono, String email,String sexo, int edad, int idPaciente, String tipo) {
+        super(dni, nombre, apellido, direccion, telefono, email,sexo,edad);
         this.idPaciente = idPaciente;
         this.tipo = tipo;
     }

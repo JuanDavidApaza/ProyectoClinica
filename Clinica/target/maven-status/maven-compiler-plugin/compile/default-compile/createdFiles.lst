@@ -12,6 +12,7 @@ Modelo\Paciente.class
 Vista\RegistrarNuevoPacienteJdialog$2.class
 Vista\VentanaDoctor.class
 Vista\ModificarPacienteJDialog$1.class
+Vista\VentanaAdministrador.class
 Vista\VentanaDoctor$1.class
 Vista\RegistrarNuevoPacienteJdialog$4.class
 Vista\RegistrarPacienteInvitadoJdialog$3.class
@@ -25,6 +26,7 @@ Vista\ModificarPacienteJDialog$3$1.class
 Conexion\Conexion.class
 Vista\ModificarPacienteJDialog.class
 Modelo\CitaTrabajador.class
+Modelo\DAO\DoctorDAO.class
 Vista\ModificarPacienteJDialog$3.class
 Modelo\Doctor.class
 Vista\HistorialMedicoJDialog$1.class
@@ -35,10 +37,12 @@ Vista\Login$1.class
 Vista\VentanaPacienteRegistrado$4.class
 Modelo\Persona.class
 Modelo\Trabajador.class
+Controlador\LoginController.class
 Vista\HistorialMedicoJDialog$3.class
 Vista\VentanaTrabajador.class
 Modelo\Pago.class
 Vista\VentanaPacienteRegistrado$3.class
+Modelo\DAO\TrabajadorDAO.class
 Modelo\Cita.class
 Vista\VentanaDoctor$3.class
 Controlador\CtrlPrincipal.class
@@ -47,4 +51,5 @@ Modelo\HorarioDoctor.class
 Vista\RegistrarPacienteInvitadoJdialog$2.class
 Vista\RegistrarNuevoPacienteJdialog.class
 Vista\VentanaTrabajador$2.class
+Vista\VentanaAdministrador$1.class
 Vista\RegistrarPacienteInvitadoJdialog$5.class

@@ -1,13 +1,17 @@
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\HorarioDoctor.java
+C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\DAO\TrabajadorDAO.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\HistorialMedico.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\Trabajador.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Conexion\Conexion.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Vista\VentanaTrabajador.java
+C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\DAO\DoctorDAO.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\Pago.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Vista\ModificarPacienteJDialog.java
+C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Vista\VentanaAdministrador.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Controlador\CtrlPrincipal.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\CitaTrabajador.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Vista\VentanaDoctor.java
+C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Controlador\LoginController.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\Cita.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\Doctor.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Vista\RegistrarPacienteInvitadoJdialog.java

@@ -8,8 +8,8 @@ public class Trabajador extends Persona {
 
     public Trabajador() {}
 
-    public Trabajador(String dni, String nombre, String apellido, String direccion, String telefono, String email, int idTrabajador, String usuario, String password, String rol) {
-        super(dni, nombre, apellido, direccion, telefono, email);
+    public Trabajador(String dni, String nombre, String apellido, String direccion, String telefono, String email,String sexo, int edad, int idTrabajador, String usuario, String password, String rol) {
+        super(dni, nombre, apellido, direccion, telefono, email, sexo, edad);
         this.idTrabajador = idTrabajador;
         this.usuario = usuario;
         this.password = password;
