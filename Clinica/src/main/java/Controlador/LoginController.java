@@ -20,6 +20,7 @@ public class LoginController {
         this.ctrlPrincipal = ctrlPrincipal;
 
         this.loginView.btnIngresar.addActionListener(e -> autenticarUsuario());
+        this.loginView.btnCancelar.addActionListener(e -> borrarDatos());
     }
 
     public void autenticarUsuario() {
@@ -38,5 +39,10 @@ public class LoginController {
         } else {
             JOptionPane.showMessageDialog(loginView, "Usuario o contraseña incorrectos");
         }
+    }
+    
+    public void borrarDatos(){
+        loginView.txtpassword.setText("");
+        loginView.txtuser.setText("");
     }
 }
