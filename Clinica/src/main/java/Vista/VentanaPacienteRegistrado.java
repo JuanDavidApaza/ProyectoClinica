@@ -59,8 +59,8 @@ public class VentanaPacienteRegistrado extends javax.swing.JFrame {
         btnModificarDatos = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        btnIrPaciente = new javax.swing.JButton();
-        btnIrPago = new javax.swing.JButton();
+        btnIraPaciente = new javax.swing.JButton();
+        btnIraPago = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -129,30 +129,30 @@ public class VentanaPacienteRegistrado extends javax.swing.JFrame {
         jToolBar1.setBackground(new java.awt.Color(0, 102, 102));
         jToolBar1.setRollover(true);
 
-        btnIrPaciente.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
-        btnIrPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paciente.png"))); // NOI18N
-        btnIrPaciente.setText("Paciente");
-        btnIrPaciente.setAlignmentX(0.5F);
-        btnIrPaciente.setFocusable(false);
-        btnIrPaciente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnIrPaciente.setMargin(new java.awt.Insets(3, 25, 3, 25));
-        btnIrPaciente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        btnIrPaciente.addActionListener(new java.awt.event.ActionListener() {
+        btnIraPaciente.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
+        btnIraPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paciente.png"))); // NOI18N
+        btnIraPaciente.setText("Paciente");
+        btnIraPaciente.setAlignmentX(0.5F);
+        btnIraPaciente.setFocusable(false);
+        btnIraPaciente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnIraPaciente.setMargin(new java.awt.Insets(3, 25, 3, 25));
+        btnIraPaciente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnIraPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnIrPacienteActionPerformed(evt);
+                btnIraPacienteActionPerformed(evt);
             }
         });
-        jToolBar1.add(btnIrPaciente);
+        jToolBar1.add(btnIraPaciente);
 
-        btnIrPago.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
-        btnIrPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pay.png"))); // NOI18N
-        btnIrPago.setText("Pago");
-        btnIrPago.setAlignmentX(0.5F);
-        btnIrPago.setFocusable(false);
-        btnIrPago.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnIrPago.setMargin(new java.awt.Insets(2, 20, 3, 14));
-        btnIrPago.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(btnIrPago);
+        btnIraPago.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
+        btnIraPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pay.png"))); // NOI18N
+        btnIraPago.setText("Pago");
+        btnIraPago.setAlignmentX(0.5F);
+        btnIraPago.setFocusable(false);
+        btnIraPago.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnIraPago.setMargin(new java.awt.Insets(2, 20, 3, 14));
+        btnIraPago.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnIraPago);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -191,9 +191,9 @@ public class VentanaPacienteRegistrado extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnIrPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIrPacienteActionPerformed
+    private void btnIraPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIraPacienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnIrPacienteActionPerformed
+    }//GEN-LAST:event_btnIraPacienteActionPerformed
 
     private void cajaDniActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cajaDniActionPerformed
         // TODO add your handling code here:
@@ -242,11 +242,11 @@ public class VentanaPacienteRegistrado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnBuscarPacienteDNI;
     public javax.swing.JButton btnHistorialMedico;
-    public javax.swing.JButton btnIrPaciente;
-    public javax.swing.JButton btnIrPago;
+    public javax.swing.JButton btnIraPaciente;
+    public javax.swing.JButton btnIraPago;
     public javax.swing.JButton btnModificarDatos;
     public javax.swing.JButton btnRegistrarCita;
-    private javax.swing.JTextField cajaDni;
+    public javax.swing.JTextField cajaDni;
     public javax.swing.JLabel etiquetaNombrePaciente;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

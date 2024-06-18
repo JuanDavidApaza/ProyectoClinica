@@ -1,10 +1,11 @@
 package Controlador;
 
-import Modelo.DAO.TrabajadorDAO;
-import Modelo.DAO.DoctorDAO;
+import Modelo.DAO.PacienteDAO;
 import Vista.*;
+import javax.swing.JOptionPane;
 
 public class CtrlPrincipal {
+
     private final Login loginView;
     private final LoginController loginController;
     private final VentanaTrabajador ventanaTrabajador;
@@ -34,8 +35,12 @@ public class CtrlPrincipal {
             case "Doctor":
                 ventanaDoctor.setVisible(true);
                 break;
-            default:
+            case "Trabajador":
                 ventanaTrabajador.setVisible(true);
+                new CtrlTrabajador(ventanaTrabajador, new PacienteDAO());
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Rol desconocido");
                 break;
         }
     }

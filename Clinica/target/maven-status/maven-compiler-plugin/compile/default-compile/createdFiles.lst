@@ -1,6 +1,8 @@
 Vista\Login.class
 Vista\RegistrarPacienteInvitadoJdialog$4.class
 Vista\VentanaPacienteRegistrado.class
+Controlador\CtrlRegistrarPacienteInvitado.class
+Modelo\DAO\PacienteDAO.class
 Vista\RegistrarPacienteInvitadoJdialog$5$1.class
 Vista\HistorialMedicoJDialog$3$1.class
 Vista\RegistrarNuevoPacienteJdialog$1.class
@@ -13,6 +15,8 @@ Vista\RegistrarNuevoPacienteJdialog$2.class
 Vista\VentanaDoctor.class
 Vista\ModificarPacienteJDialog$1.class
 Vista\VentanaAdministrador.class
+Controlador\CtrlTrabajador.class
+Vista\ModificarPacienteJDialog$4$1.class
 Vista\VentanaDoctor$1.class
 Vista\RegistrarNuevoPacienteJdialog$4.class
 Vista\RegistrarPacienteInvitadoJdialog$3.class
@@ -22,17 +26,19 @@ Vista\HistorialMedicoJDialog$2.class
 Vista\Login$2.class
 Vista\RegistrarNuevoPacienteJdialog$3.class
 Vista\HistorialMedicoJDialog.class
-Vista\ModificarPacienteJDialog$3$1.class
 Conexion\Conexion.class
 Vista\ModificarPacienteJDialog.class
 Modelo\CitaTrabajador.class
 Modelo\DAO\DoctorDAO.class
 Vista\ModificarPacienteJDialog$3.class
+Vista\ModificarPacienteJDialog$4.class
+Controlador\CtrlPacienteRegistrado.class
 Modelo\Doctor.class
 Vista\HistorialMedicoJDialog$1.class
 Vista\RegistrarNuevoPacienteJdialog$5$1.class
 Vista\RegistrarPacienteInvitadoJdialog.class
 Vista\VentanaPacienteRegistrado$1.class
+Controlador\CtrlRegistrarNuevoPaciente.class
 Vista\Login$1.class
 Vista\VentanaPacienteRegistrado$4.class
 Modelo\Persona.class
@@ -42,6 +48,7 @@ Vista\HistorialMedicoJDialog$3.class
 Vista\VentanaTrabajador.class
 Modelo\Pago.class
 Vista\VentanaPacienteRegistrado$3.class
+Controlador\CtrlModificarPaciente.class
 Modelo\DAO\TrabajadorDAO.class
 Modelo\Cita.class
 Vista\VentanaDoctor$3.class

@@ -55,8 +55,8 @@ public class VentanaTrabajador extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jToolBar1 = new javax.swing.JToolBar();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnIraPaciente = new javax.swing.JButton();
+        btnIraPago = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -100,30 +100,30 @@ public class VentanaTrabajador extends javax.swing.JFrame {
         jToolBar1.setBackground(new java.awt.Color(0, 102, 102));
         jToolBar1.setRollover(true);
 
-        jButton1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paciente.png"))); // NOI18N
-        jButton1.setText("Paciente");
-        jButton1.setAlignmentX(0.5F);
-        jButton1.setFocusable(false);
-        jButton1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton1.setMargin(new java.awt.Insets(3, 25, 3, 25));
-        jButton1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btnIraPaciente.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
+        btnIraPaciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/paciente.png"))); // NOI18N
+        btnIraPaciente.setText("Paciente");
+        btnIraPaciente.setAlignmentX(0.5F);
+        btnIraPaciente.setFocusable(false);
+        btnIraPaciente.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnIraPaciente.setMargin(new java.awt.Insets(3, 25, 3, 25));
+        btnIraPaciente.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnIraPaciente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btnIraPacienteActionPerformed(evt);
             }
         });
-        jToolBar1.add(jButton1);
+        jToolBar1.add(btnIraPaciente);
 
-        jButton2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pay.png"))); // NOI18N
-        jButton2.setText("Pago");
-        jButton2.setAlignmentX(0.5F);
-        jButton2.setFocusable(false);
-        jButton2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        jButton2.setMargin(new java.awt.Insets(2, 20, 3, 14));
-        jButton2.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
-        jToolBar1.add(jButton2);
+        btnIraPago.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
+        btnIraPago.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pay.png"))); // NOI18N
+        btnIraPago.setText("Pago");
+        btnIraPago.setAlignmentX(0.5F);
+        btnIraPago.setFocusable(false);
+        btnIraPago.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnIraPago.setMargin(new java.awt.Insets(2, 20, 3, 14));
+        btnIraPago.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        jToolBar1.add(btnIraPago);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -161,9 +161,9 @@ public class VentanaTrabajador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btnIraPacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIraPacienteActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btnIraPacienteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -201,11 +201,11 @@ public class VentanaTrabajador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnIraPaciente;
+    public javax.swing.JButton btnIraPago;
     public javax.swing.JButton btnNuevoPaciente;
     public javax.swing.JButton btnPacienteInvit;
     public javax.swing.JButton btnPacienteReg;
-    public javax.swing.JButton jButton1;
-    public javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
