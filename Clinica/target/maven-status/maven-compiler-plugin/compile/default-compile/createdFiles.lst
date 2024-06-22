@@ -17,6 +17,7 @@ Vista\ModificarPacienteJDialog$1.class
 Vista\VentanaAdministrador.class
 Controlador\CtrlTrabajador.class
 Vista\ModificarPacienteJDialog$4$1.class
+Vista\ValidarDatosReniec$1.class
 Vista\VentanaDoctor$1.class
 Vista\RegistrarNuevoPacienteJdialog$4.class
 Vista\RegistrarPacienteInvitadoJdialog$3.class
@@ -26,6 +27,7 @@ Vista\HistorialMedicoJDialog$2.class
 Vista\Login$2.class
 Vista\RegistrarNuevoPacienteJdialog$3.class
 Vista\HistorialMedicoJDialog.class
+Vista\ValidarDatosReniec$2.class
 Conexion\Conexion.class
 Vista\ModificarPacienteJDialog.class
 Modelo\CitaTrabajador.class
@@ -42,6 +44,7 @@ Controlador\CtrlRegistrarNuevoPaciente.class
 Vista\Login$1.class
 Vista\VentanaPacienteRegistrado$4.class
 Modelo\Persona.class
+Vista\ValidarDatosReniec.class
 Modelo\Trabajador.class
 Controlador\LoginController.class
 Vista\HistorialMedicoJDialog$3.class
