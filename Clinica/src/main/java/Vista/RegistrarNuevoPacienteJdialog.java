@@ -50,6 +50,8 @@ public class RegistrarNuevoPacienteJdialog extends javax.swing.JDialog {
         cajaTelefono = new javax.swing.JTextField();
         btnconsultar = new javax.swing.JButton();
         ComboBoxDocumento = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        cajaPais = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -65,15 +67,15 @@ public class RegistrarNuevoPacienteJdialog extends javax.swing.JDialog {
                 cajaNombreActionPerformed(evt);
             }
         });
-        jPanel1.add(cajaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 100, 240, -1));
+        jPanel1.add(cajaNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 110, 240, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabel2.setText("Nombre(s):");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 103, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, -1, 20));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabel3.setText("Apellido(s):");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(26, 159, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabel4.setText("Dirección:");
@@ -85,22 +87,22 @@ public class RegistrarNuevoPacienteJdialog extends javax.swing.JDialog {
 
         jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabel6.setText("Edad:");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 244, -1, -1));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 260, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabel7.setText("Sexo:");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(382, 131, -1, -1));
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 160, -1, -1));
 
         cajaApellidos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cajaApellidosActionPerformed(evt);
             }
         });
-        jPanel1.add(cajaApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(104, 156, 240, -1));
+        jPanel1.add(cajaApellidos, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 160, 240, -1));
         jPanel1.add(cajaDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 210, 246, -1));
         jPanel1.add(cajaEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(98, 259, 246, -1));
-        jPanel1.add(cajaEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 241, 50, -1));
-        jPanel1.add(cajaSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 128, 42, -1));
+        jPanel1.add(cajaEdad, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 260, 50, -1));
+        jPanel1.add(cajaSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 160, 42, -1));
 
         btnRegistrar.setBackground(new java.awt.Color(0, 204, 0));
         btnRegistrar.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
@@ -128,8 +130,8 @@ public class RegistrarNuevoPacienteJdialog extends javax.swing.JDialog {
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
         jLabel9.setText("Telef:");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(379, 185, -1, -1));
-        jPanel1.add(cajaTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(414, 182, 121, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 210, -1, -1));
+        jPanel1.add(cajaTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 210, 110, -1));
 
         btnconsultar.setFont(new java.awt.Font("Segoe UI Semilight", 1, 12)); // NOI18N
         btnconsultar.setText("Buscar");
@@ -137,6 +139,11 @@ public class RegistrarNuevoPacienteJdialog extends javax.swing.JDialog {
 
         ComboBoxDocumento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "DNI", "Carnet Ext." }));
         jPanel1.add(ComboBoxDocumento, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 59, 72, 23));
+
+        jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 1, 12)); // NOI18N
+        jLabel8.setText("País: ");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 110, -1, -1));
+        jPanel1.add(cajaPais, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 110, 90, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -222,6 +229,7 @@ public class RegistrarNuevoPacienteJdialog extends javax.swing.JDialog {
     public javax.swing.JTextField cajaEdad;
     public javax.swing.JTextField cajaEmail;
     public javax.swing.JTextField cajaNombre;
+    public javax.swing.JTextField cajaPais;
     public javax.swing.JTextField cajaSexo;
     public javax.swing.JTextField cajaTelefono;
     private javax.swing.JLabel jLabel1;
@@ -231,6 +239,7 @@ public class RegistrarNuevoPacienteJdialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     // End of variables declaration//GEN-END:variables

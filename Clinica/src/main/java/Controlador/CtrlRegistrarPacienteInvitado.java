@@ -22,26 +22,53 @@ public class CtrlRegistrarPacienteInvitado {
         this.registrarPacienteInvitadoJdialog = registrarPacienteInvitadoJdialog;
         this.pacienteDAO = pacienteDAO;
         desactivarCajas();
+        inicializarListeners();
+    }
+
+    private void inicializarListeners() {
         this.registrarPacienteInvitadoJdialog.btnRegistrar.addActionListener(e -> registrarPacienteInvitado());
         this.registrarPacienteInvitadoJdialog.btnCancelar.addActionListener(e -> cancelarRegistro());
         this.registrarPacienteInvitadoJdialog.btnConsultar.addActionListener(e -> buscarDatos());
+        this.registrarPacienteInvitadoJdialog.ComboBoxDocumento.addActionListener(e -> manejarTipoDocumento());
     }
-    
-    private void desactivarCajas(){
+
+    private void manejarTipoDocumento() {
+        String tipoDocumento = (String) registrarPacienteInvitadoJdialog.ComboBoxDocumento.getSelectedItem();
+        if ("DNI".equals(tipoDocumento)) {
+            registrarPacienteInvitadoJdialog.btnConsultar.setVisible(true);
+            desactivarCajas();
+            limpiarCajas();
+        } else {
+            registrarPacienteInvitadoJdialog.btnConsultar.setVisible(false);
+            activarCajas();
+            limpiarCajas();
+        }
+    }
+
+    private void activarCajas() {
+        this.registrarPacienteInvitadoJdialog.cajaNombre.setEnabled(true);
+        this.registrarPacienteInvitadoJdialog.cajaApellidos.setEnabled(true);
+        this.registrarPacienteInvitadoJdialog.cajaSexo.setEnabled(true);
+        this.registrarPacienteInvitadoJdialog.cajaPais.setEnabled(true);
+    }
+
+    private void desactivarCajas() {
         this.registrarPacienteInvitadoJdialog.cajaNombre.setEnabled(false);
         this.registrarPacienteInvitadoJdialog.cajaApellidos.setEnabled(false);
-        this.registrarPacienteInvitadoJdialog.cajaSexo.setEnabled(false); 
+        this.registrarPacienteInvitadoJdialog.cajaSexo.setEnabled(false);
+        this.registrarPacienteInvitadoJdialog.cajaPais.setEnabled(false);
     }
-    
-    private void limpiarCajas(){
+
+    private void limpiarCajas() {
         this.registrarPacienteInvitadoJdialog.cajaNombre.setText(" ");
         this.registrarPacienteInvitadoJdialog.cajaApellidos.setText(" ");
         this.registrarPacienteInvitadoJdialog.cajaSexo.setText(" ");
         this.registrarPacienteInvitadoJdialog.cajaDNI.setText(" ");
+        this.registrarPacienteInvitadoJdialog.cajaPais.setText(" ");
 
     }
-    
-    private void buscarDatos(){
+
+    private void buscarDatos() {
         String token = "cGVydWRldnMucHJvZHVjdGlvbi5maXRjb2RlcnMuNjY3NjVjYTZkNDFiOTQxMTE0OGI1ODY2";
         String leerdni = registrarPacienteInvitadoJdialog.cajaDNI.getText();
         String enlace = "https://api.perudevs.com/api/v1/dni/complete?document=" + leerdni + "&key=" + token;
@@ -64,12 +91,14 @@ public class CtrlRegistrarPacienteInvitado {
                 String fecha_nacimiento = rootobj.has("resultado") ? rootobj.getAsJsonObject("resultado").has("fecha_nacimiento") ? rootobj.getAsJsonObject("resultado").get("fecha_nacimiento").getAsString() : "" : "";
                 String nombre_completo = rootobj.has("resultado") ? rootobj.getAsJsonObject("resultado").has("nombre_completo") ? rootobj.getAsJsonObject("resultado").get("nombre_completo").getAsString() : "" : "";
                 String codigo_verificacion = rootobj.has("resultado") ? rootobj.getAsJsonObject("resultado").has("codigo_verificacion") ? rootobj.getAsJsonObject("resultado").get("codigo_verificacion").getAsString() : "" : "";
-                
+
                 //Rellenar en cajas
                 registrarPacienteInvitadoJdialog.cajaNombre.setText(nombres);
                 registrarPacienteInvitadoJdialog.cajaApellidos.setText(apellido_paterno + " " + apellido_materno);
                 registrarPacienteInvitadoJdialog.cajaSexo.setText(genero);
-   
+
+                //Establecer pais
+                registrarPacienteInvitadoJdialog.cajaPais.setText("Perú");
             }
 
         } catch (Exception e) {
@@ -82,13 +111,14 @@ public class CtrlRegistrarPacienteInvitado {
 
     private void registrarPacienteInvitado() {
         String dni = registrarPacienteInvitadoJdialog.cajaDNI.getText().trim(); // Trim para eliminar espacios en blanco
-        String nombre = registrarPacienteInvitadoJdialog.cajaNombre.getText();
-        String apellido = registrarPacienteInvitadoJdialog.cajaApellidos.getText();
-        String direccion = null ;
+        String nombre = registrarPacienteInvitadoJdialog.cajaNombre.getText().trim();
+        String apellido = registrarPacienteInvitadoJdialog.cajaApellidos.getText().trim();
+        String direccion = null;
         String telefono = null;
         String email = null;
-        String sexo = registrarPacienteInvitadoJdialog.cajaSexo.getText();
-        int edad=0;
+        String sexo = registrarPacienteInvitadoJdialog.cajaSexo.getText().trim();
+        String pais = registrarPacienteInvitadoJdialog.cajaPais.getText().trim();
+        int edad = 0;
 
         // Validaciones
         // Validar si el DNI ya existe
@@ -96,16 +126,25 @@ public class CtrlRegistrarPacienteInvitado {
             JOptionPane.showMessageDialog(null, "El DNI ingresado ya existe");
             return;
         }
+        // Validar sexo
+        if (!sexo.equals("F") && !sexo.equals("M")) {
+            JOptionPane.showMessageDialog(null, "El sexo debe ser F o M");
+            return;
+        }
+        if (dni.isEmpty() || nombre.isEmpty() || apellido.isEmpty() || sexo.isEmpty() || pais.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Todos los campos son obligatorios");
+            return;
+        }
 
         // Crear el objeto
-        Paciente paciente = new Paciente(dni, nombre, apellido, direccion, telefono, email, sexo, edad, 0, "Invitado");
+        Paciente paciente = new Paciente(dni, nombre, apellido, direccion, telefono, email, sexo, edad, pais, 0, "Invitado");
 
         // Insertar el paciente en la base de datos
         if (pacienteDAO.insertarPaciente(paciente)) {
             JOptionPane.showMessageDialog(null, "Paciente invitado, ir a registrar cita");
             registrarPacienteInvitadoJdialog.dispose();
         } else {
-            JOptionPane.showMessageDialog(null, "Error ");
+            JOptionPane.showMessageDialog(null, "Error, verificar datos ");
         }
     }
 

@@ -91,7 +91,7 @@ public class VentanaPacienteRegistrado extends javax.swing.JFrame {
                 cajaDniActionPerformed(evt);
             }
         });
-        jPanel1.add(cajaDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 100, 190, -1));
+        jPanel1.add(cajaDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 92, 190, 30));
 
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 36)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(0, 0, 0));
@@ -100,7 +100,7 @@ public class VentanaPacienteRegistrado extends javax.swing.JFrame {
 
         btnBuscarPacienteDNI.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         btnBuscarPacienteDNI.setText("Buscar");
-        jPanel1.add(btnBuscarPacienteDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(730, 100, -1, -1));
+        jPanel1.add(btnBuscarPacienteDNI, new org.netbeans.lib.awtextra.AbsoluteConstraints(720, 90, -1, 30));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(0, 0, 0));

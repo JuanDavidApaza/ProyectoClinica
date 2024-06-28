@@ -35,7 +35,7 @@ public class CtrlPacienteRegistrado {
     private void buscarPacientePorDNI() {
         String dni = ventanaPacienteRegistrado.cajaDni.getText();
         if (!dni.isEmpty()) {
-            Paciente paciente = pacienteDAO.obtenerPacientePorDNI(dni);
+            Paciente paciente = pacienteDAO.obtenerPacienteRegistrado(dni);
             if (paciente != null) {
                 ventanaPacienteRegistrado.etiquetaNombrePaciente.setText("Paciente: "+paciente.getNombre() + " " + paciente.getApellido());
                 habilitarBotonesOperaciones();

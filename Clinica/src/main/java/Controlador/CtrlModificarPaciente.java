@@ -38,6 +38,7 @@ public class CtrlModificarPaciente {
             modificarPacienteJdialog.cajaEmail.setText(paciente.getEmail());
             modificarPacienteJdialog.cajaSexo.setText(paciente.getSexo());
             modificarPacienteJdialog.cajaEdad.setText(String.valueOf(paciente.getEdad()));
+            modificarPacienteJdialog.cajaPais.setText(paciente.getPais());
         } else {
             JOptionPane.showMessageDialog(null, "Paciente no encontrado");
             modificarPacienteJdialog.dispose();
@@ -52,6 +53,7 @@ public class CtrlModificarPaciente {
         String email = modificarPacienteJdialog.cajaEmail.getText();
         String sexo = modificarPacienteJdialog.cajaSexo.getText();
         String edadStr = modificarPacienteJdialog.cajaEdad.getText();
+        String pais = modificarPacienteJdialog.cajaPais.getText();
 
         // Validar si algún campo obligatorio está vacío
         if (nombre.isEmpty() || apellido.isEmpty() || direccion.isEmpty() ||
@@ -79,6 +81,7 @@ public class CtrlModificarPaciente {
                 email,
                 sexo,
                 edad,
+                pais,
                 0,  // No se utiliza
                 "Modificado"
         );

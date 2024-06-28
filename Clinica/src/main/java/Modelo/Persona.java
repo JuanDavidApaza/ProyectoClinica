@@ -9,10 +9,11 @@ public class Persona {
     private String email;
     private String sexo;
     private int edad;
+    private String pais;
 
     public Persona() {}
 
-    public Persona(String dni, String nombre, String apellido, String direccion, String telefono, String email, String sexo, int edad) {
+    public Persona(String dni, String nombre, String apellido, String direccion, String telefono, String email, String sexo, int edad,String pais) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -21,6 +22,7 @@ public class Persona {
         this.email = email;
         this.sexo = sexo;
         this.edad = edad;
+        this.pais = pais;
     }
 
     public String getDni() {
@@ -86,6 +88,16 @@ public class Persona {
     public void setEdad(int edad) {
         this.edad = edad;
     }
+
+    public String getPais() {
+        return pais;
+    }
+
+    public void setPais(String pais) {
+        this.pais = pais;
+    }
+    
+    
     
     
 }

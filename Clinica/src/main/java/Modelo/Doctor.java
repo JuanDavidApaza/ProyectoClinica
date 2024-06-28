@@ -8,8 +8,8 @@ public class Doctor extends Persona {
 
     public Doctor() {}
 
-    public Doctor(String dni, String nombre, String apellido, String direccion, String telefono,String sexo, int edad, String email, int idDoctor, String especialidad, String usuario, String password) {
-        super(dni, nombre, apellido, direccion, telefono, email, sexo, edad);
+    public Doctor(String dni, String nombre, String apellido, String direccion, String telefono,String sexo, int edad, String email,String pais, int idDoctor, String especialidad, String usuario, String password) {
+        super(dni, nombre, apellido, direccion, telefono, email, sexo, edad,pais);
         this.idDoctor = idDoctor;
         this.especialidad = especialidad;
         this.usuario = usuario;

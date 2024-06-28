@@ -26,7 +26,7 @@ public class PacienteDAO {
         return false;
     }
 
-    String sqlPersona = "INSERT INTO persona (DNI, Nombre, Apellido, Direccion, Telefono, Email, Sexo, Edad) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+    String sqlPersona = "INSERT INTO persona (DNI, Nombre, Apellido, Direccion, Telefono, Email, Sexo, Edad, Pais) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
     String sqlPaciente = "INSERT INTO paciente (DNI_fk, Tipo) VALUES (?, ?)";
     String sqlGetIdPaciente = "SELECT LAST_INSERT_ID() AS IDPaciente";
 
@@ -42,6 +42,7 @@ public class PacienteDAO {
         statementPersona.setString(6, paciente.getEmail());
         statementPersona.setString(7, paciente.getSexo());
         statementPersona.setInt(8, paciente.getEdad());
+        statementPersona.setString(9, paciente.getPais());        
         statementPersona.executeUpdate();
 
         PreparedStatement statementPaciente = conexion.prepareStatement(sqlPaciente);
@@ -94,7 +95,7 @@ public class PacienteDAO {
     }
 
     public Paciente obtenerPacientePorDNI(String dni) {
-        String sql = "SELECT p.DNI, p.Nombre, p.Apellido, p.Direccion, p.Telefono, p.Email, p.Sexo, p.Edad, pa.IDPaciente, pa.Tipo " +
+        String sql = "SELECT p.DNI, p.Nombre, p.Apellido, p.Direccion, p.Telefono, p.Email, p.Sexo, p.Edad, p.Pais, pa.IDPaciente, pa.Tipo " +
                      "FROM persona p " +
                      "JOIN paciente pa ON p.Dni = pa.DNI_fk " +
                      "WHERE p.DNI = ?";
@@ -112,10 +113,45 @@ public class PacienteDAO {
                 String email = resultSet.getString("Email");
                 String sexo = resultSet.getString("Sexo");
                 int edad = resultSet.getInt("Edad");
+                String pais = resultSet.getString("Pais");
                 int idPaciente = resultSet.getInt("IDPaciente");
                 String tipo = resultSet.getString("Tipo");
 
-                return new Paciente(dni, nombre, apellido, direccion, telefono, email, sexo, edad, idPaciente, tipo);
+                return new Paciente(dni, nombre, apellido, direccion, telefono, email, sexo, edad,pais, idPaciente, tipo);
+            } else {
+                return null;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
+    
+    public Paciente obtenerPacienteRegistrado(String dni) {
+        String sql = "SELECT p.DNI, p.Nombre, p.Apellido, p.Direccion, p.Telefono, p.Email, p.Sexo, p.Edad, p.Pais, pa.IDPaciente, pa.Tipo " +
+                     "FROM persona p " +
+                     "JOIN paciente pa ON p.Dni = pa.DNI_fk " +
+                     "WHERE p.DNI = ? AND pa.Tipo='Registrado' ";
+        try {
+            PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setString(1, dni);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String nombre = resultSet.getString("Nombre");
+                String apellido = resultSet.getString("Apellido");
+                String direccion = resultSet.getString("Direccion");
+                String telefono = resultSet.getString("Telefono");
+                String email = resultSet.getString("Email");
+                String sexo = resultSet.getString("Sexo");
+                int edad = resultSet.getInt("Edad");
+                String pais = resultSet.getString("Pais");
+                int idPaciente = resultSet.getInt("IDPaciente");
+                String tipo = resultSet.getString("Tipo");
+
+                return new Paciente(dni, nombre, apellido, direccion, telefono, email, sexo, edad,pais, idPaciente, tipo);
             } else {
                 return null;
             }
@@ -127,7 +163,7 @@ public class PacienteDAO {
     }
     
     public boolean actualizarPaciente(Paciente paciente) {
-    String sqlPersona = "UPDATE persona SET Nombre = ?, Apellido = ?, Direccion = ?, Telefono = ?, Email = ?, Sexo = ?, Edad = ? WHERE DNI = ?";
+    String sqlPersona = "UPDATE persona SET Nombre = ?, Apellido = ?, Direccion = ?, Telefono = ?, Email = ?, Sexo = ?, Edad = ?, Pais = ? WHERE DNI = ?";
     try {
         conexion.setAutoCommit(false);  // Start transaction
 
@@ -139,7 +175,8 @@ public class PacienteDAO {
         statementPersona.setString(5, paciente.getEmail());
         statementPersona.setString(6, paciente.getSexo());
         statementPersona.setInt(7, paciente.getEdad());
-        statementPersona.setString(8, paciente.getDni());
+        statementPersona.setString(8, paciente.getPais());        
+        statementPersona.setString(9, paciente.getDni());
         int rowsUpdated = statementPersona.executeUpdate();
 
         conexion.commit();  // Commit transaction
@@ -161,5 +198,20 @@ public class PacienteDAO {
         }
     }
 }
+    
+     public boolean actualizarTipoPaciente(String dni, String nuevoTipo) {
+        String sql = "UPDATE paciente SET Tipo = ? WHERE DNI_fk = ?";
+        try {
+            PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setString(1, nuevoTipo);
+            statement.setString(2, dni);
+            int rowsUpdated = statement.executeUpdate();
+            return rowsUpdated > 0;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
+        }
+    }
 
 }
