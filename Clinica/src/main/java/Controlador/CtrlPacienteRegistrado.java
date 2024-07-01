@@ -1,9 +1,12 @@
 package Controlador;
 
+import Modelo.DAO.CitaDAO;
+import Modelo.DAO.HorarioDoctorDAO;
 import Modelo.DAO.PacienteDAO;
 import Modelo.Paciente;
 import Vista.ModificarPacienteJDialog;
 import Vista.VentanaPacienteRegistrado;
+import Vista.VentanaRegistroCitaJDialog;
 import Vista.VentanaTrabajador;
 
 import javax.swing.JOptionPane;
@@ -12,11 +15,15 @@ public class CtrlPacienteRegistrado {
 
     private final VentanaPacienteRegistrado ventanaPacienteRegistrado;
     private final PacienteDAO pacienteDAO;
+    private final CitaDAO citaDAO;
+    private final HorarioDoctorDAO horarioDoctorDAO;
     private final VentanaTrabajador ventanaTrabajador;
 
-    public CtrlPacienteRegistrado(VentanaPacienteRegistrado ventanaPacienteRegistrado, PacienteDAO pacienteDAO, VentanaTrabajador ventanaTrabajador) {
+    public CtrlPacienteRegistrado(VentanaPacienteRegistrado ventanaPacienteRegistrado, PacienteDAO pacienteDAO, CitaDAO citaDAO, HorarioDoctorDAO horarioDoctorDAO, VentanaTrabajador ventanaTrabajador) {
         this.ventanaPacienteRegistrado = ventanaPacienteRegistrado;
         this.pacienteDAO = pacienteDAO;
+        this.citaDAO = citaDAO;
+        this.horarioDoctorDAO = horarioDoctorDAO;
         this.ventanaTrabajador = ventanaTrabajador;
 
         this.ventanaPacienteRegistrado.setVisible(true);
@@ -77,7 +84,15 @@ public class CtrlPacienteRegistrado {
     }
 
     private void registrarCita() {
-        // logica
+        String dni = ventanaPacienteRegistrado.cajaDni.getText();
+        Paciente paciente = pacienteDAO.obtenerPacienteRegistrado(dni);
+        if (paciente != null) {
+            VentanaRegistroCitaJDialog ventanaRegistroCitaJDialog = new VentanaRegistroCitaJDialog(null, true);
+            new CtrlRegistrarCita(ventanaRegistroCitaJDialog, citaDAO, pacienteDAO, horarioDoctorDAO, paciente);
+            ventanaRegistroCitaJDialog.setVisible(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Paciente no encontrado");
+        }
     }
 
     private void regresarVentanaTrabajador() {
