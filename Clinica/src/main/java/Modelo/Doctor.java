@@ -1,15 +1,17 @@
 package Modelo;
 
 public class Doctor extends Persona {
+
     private int idDoctor;
     private String especialidad;
     private String usuario;
     private String password;
 
-    public Doctor() {}
+    public Doctor() {
+    }
 
-    public Doctor(String dni, String nombre, String apellido, String direccion, String telefono,String sexo, int edad, String email,String pais, int idDoctor, String especialidad, String usuario, String password) {
-        super(dni, nombre, apellido, direccion, telefono, email, sexo, edad,pais);
+    public Doctor(String dni, String nombre, String apellido, String direccion, String telefono, String sexo, int edad, String email, String pais, int idDoctor, String especialidad, String usuario, String password) {
+        super(dni, nombre, apellido, direccion, telefono, email, sexo, edad, pais);
         this.idDoctor = idDoctor;
         this.especialidad = especialidad;
         this.usuario = usuario;
@@ -47,4 +49,10 @@ public class Doctor extends Persona {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    @Override
+    public String toString() {
+        return getNombre() + " " + getApellido();
+    }
+
 }
