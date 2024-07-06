@@ -2,6 +2,7 @@ package Vista;
 
 import Controlador.CtrlRegistrarCita;
 import Modelo.Doctor;
+import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,16 +17,30 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
     public VentanaRegistroCitaJDialog(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-        setSize(780, 500);
+        setSize(780, 450);
         setResizable(false);
         setLocationRelativeTo(null);
     }
     
       public void setControlador(CtrlRegistrarCita controlador) {
-        btnRegistrarCita.addActionListener(e -> controlador.registrarCita());
-        btnMostrarHistorial.addActionListener(e -> controlador.mostrarHistorialMedico());
-        btnCancelar.addActionListener(e -> controlador.limpiarDatosPaciente());
+    for (ActionListener al : btnRegistrarCita.getActionListeners()) {
+        btnRegistrarCita.removeActionListener(al);
     }
+    btnRegistrarCita.addActionListener(e -> controlador.registrarCita());
+    
+    for (ActionListener al : btnMostrarHistorial.getActionListeners()) {
+        btnMostrarHistorial.removeActionListener(al);
+    }
+    btnMostrarHistorial.addActionListener(e -> controlador.mostrarHistorialMedico());
+    
+    for (ActionListener al : btnCancelar.getActionListeners()) {
+        btnCancelar.removeActionListener(al);
+    }
+    btnCancelar.addActionListener(e -> controlador.limpiarDatosPaciente());
+}
+
+
+
 
     public void deshabilitarBotonesOperaciones() {
         btnRegistrarCita.setEnabled(false);
@@ -42,6 +57,10 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
     public void mostrarMensaje(String mensaje) {
         JOptionPane.showMessageDialog(this, mensaje);
     }
+
+   public String getDetalle() {
+    return textAreaDetallesCita.getText(); 
+}
 
     
     public String getTurno() {
@@ -91,7 +110,6 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
         textAreaDetallesCita = new javax.swing.JTextArea();
         btnRegistrarCita = new javax.swing.JButton();
         btnCancelar = new javax.swing.JButton();
-        jLabel13 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -222,66 +240,61 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
                 .addComponent(btnMostrarHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(46, 46, 46)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(64, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 500));
-        jPanel1.add(fechaCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 110, 30));
+        jPanel1.add(fechaCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 70, 110, 30));
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         jLabel9.setForeground(new java.awt.Color(0, 0, 0));
         jLabel9.setText("Elegir Fecha: ");
-        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 60, -1, -1));
+        jPanel1.add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 70, -1, -1));
 
         comboTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Mañana", "Tarde" }));
-        jPanel1.add(comboTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, 80, 30));
+        jPanel1.add(comboTurno, new org.netbeans.lib.awtextra.AbsoluteConstraints(600, 110, 80, 30));
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         jLabel10.setForeground(new java.awt.Color(0, 0, 0));
         jLabel10.setText("Turno:");
-        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 70, -1, -1));
+        jPanel1.add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 70, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(0, 0, 0));
         jLabel11.setText("Doctor:");
-        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 150, -1, -1));
+        jPanel1.add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 150, -1, -1));
 
         comboDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 comboDoctorActionPerformed(evt);
             }
         });
-        jPanel1.add(comboDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(630, 150, 130, 30));
+        jPanel1.add(comboDoctor, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 190, 130, 30));
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
         jLabel12.setText("Detalle de la cita: ");
-        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 130, -1, -1));
+        jPanel1.add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 150, -1, -1));
 
         textAreaDetallesCita.setColumns(20);
         textAreaDetallesCita.setRows(5);
         jScrollPane2.setViewportView(textAreaDetallesCita);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 170, -1, 130));
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 190, -1, 130));
 
         btnRegistrarCita.setBackground(new java.awt.Color(0, 51, 153));
         btnRegistrarCita.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         btnRegistrarCita.setText("Registrar Cita");
-        jPanel1.add(btnRegistrarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 390, -1, 50));
+        jPanel1.add(btnRegistrarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 350, -1, 50));
 
         btnCancelar.setBackground(new java.awt.Color(255, 0, 0));
         btnCancelar.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         btnCancelar.setText("Cancelar");
-        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 390, 130, 50));
-
-        jLabel13.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
-        jLabel13.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel13.setText("N° Turno: ");
-        jPanel1.add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 250, -1, -1));
+        jPanel1.add(btnCancelar, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 350, 130, 50));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -291,7 +304,9 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -359,7 +374,6 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -372,7 +386,7 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextArea textAreaDetallesCita;
+    public javax.swing.JTextArea textAreaDetallesCita;
     public javax.swing.JTextArea textAreaUltimaCita;
     // End of variables declaration//GEN-END:variables
 }

@@ -2,6 +2,7 @@ package Controlador;
 
 import Modelo.Cita;
 import Modelo.DAO.CitaDAO;
+import Modelo.DAO.DoctorDAO;
 import Modelo.DAO.HorarioDoctorDAO;
 import Modelo.DAO.PacienteDAO;
 import Modelo.Doctor;
@@ -10,9 +11,12 @@ import Modelo.Paciente;
 import Vista.VentanaRegistroCitaJDialog;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
-
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+import java.beans.PropertyChangeListener;
+import java.awt.event.ActionListener;
 
 public class CtrlRegistrarCita {
 
@@ -21,25 +25,33 @@ public class CtrlRegistrarCita {
     private PacienteDAO pacienteDAO;
     private HorarioDoctorDAO horarioDoctorDAO;
     private Paciente paciente;
+    private DoctorDAO doctorDAO;
+    private PropertyChangeListener fechaCitaListener;
+    private ActionListener turnoListener;
 
-    public CtrlRegistrarCita(VentanaRegistroCitaJDialog vista, CitaDAO citaDAO, PacienteDAO pacienteDAO, HorarioDoctorDAO horarioDoctorDAO, Paciente paciente) {
+    public CtrlRegistrarCita(VentanaRegistroCitaJDialog vista, CitaDAO citaDAO, PacienteDAO pacienteDAO, HorarioDoctorDAO horarioDoctorDAO, Paciente paciente, DoctorDAO doctorDAO) {
         this.vista = vista;
         this.citaDAO = citaDAO;
         this.pacienteDAO = pacienteDAO;
         this.horarioDoctorDAO = horarioDoctorDAO;
         this.paciente = paciente;
+        this.doctorDAO = doctorDAO;
         this.vista.setControlador(this);
         inicializar();
     }
 
-    private void inicializar() {
-        vista.btnRegistrarCita.addActionListener(e -> registrarCita());
-        vista.btnMostrarHistorial.addActionListener(e -> mostrarHistorialMedico());
-        vista.btnCancelar.addActionListener(e -> limpiarDatosPaciente());
-        cargarDatosPaciente();
-        cargarDoctores();
+    private boolean vistaListenersAdded = false;
 
-        agregarListenerFechaCita();
+    private void inicializar() {
+        if (!vistaListenersAdded) {
+//            vista.btnRegistrarCita.addActionListener(e -> registrarCita());
+//            vista.btnMostrarHistorial.addActionListener(e -> mostrarHistorialMedico());
+//            vista.btnCancelar.addActionListener(e -> limpiarDatosPaciente());
+            cargarDatosPaciente();
+            cargarDoctores();
+            agregarListeners();
+            vistaListenersAdded = true;
+        }
     }
 
     private void cargarDatosPaciente() {
@@ -57,77 +69,144 @@ public class CtrlRegistrarCita {
         System.out.println("Número de horarios obtenidos: " + horarios.size());
 
         for (HorarioDoctor horario : horarios) {
-            Doctor doctor = new Doctor();
-            doctor.setIdDoctor(horario.getIdDoctor());
-            // Puedes establecer otros campos del doctor si es necesario
-            vista.comboDoctor.addItem(doctor);
+            Doctor doctor = doctorDAO.obtenerDoctorPorId(horario.getIdDoctor());
+            if (doctor != null) {
+                vista.comboDoctor.addItem(doctor);
+            }
         }
     }
 
-    private void agregarListenerFechaCita() {
-        vista.fechaCita.addPropertyChangeListener("date", evt -> actualizarComboBoxDoctores());
+    private void agregarListeners() {
+        fechaCitaListener = evt -> {
+            if ("date".equals(evt.getPropertyName())) {
+                actualizarComboBoxDoctores();
+            }
+        };
+        vista.fechaCita.getDateEditor().addPropertyChangeListener(fechaCitaListener);
+
+        turnoListener = e -> actualizarComboBoxDoctores();
+        vista.comboTurno.addActionListener(turnoListener);
     }
 
     private void actualizarComboBoxDoctores() {
+        if (vista.fechaCita.getDate() == null) {
+            return;
+        }
         SimpleDateFormat sdf = new SimpleDateFormat("EEEE"); // Nombre completo del día de la semana
         String diaSemana = sdf.format(vista.fechaCita.getDate());
-        List<Doctor> doctores = citaDAO.obtenerDoctoresPorDia(diaSemana);
+        String turno = (String) vista.comboTurno.getSelectedItem();
+        List<Doctor> doctores = citaDAO.obtenerDoctoresPorDiaYTurno(diaSemana, turno);
 
         vista.comboDoctor.removeAllItems(); // Limpiar combo box antes de agregar nuevos items
 
+        Set<Integer> addedDoctorIds = new HashSet<>();
+
         for (Doctor doctor : doctores) {
-            vista.comboDoctor.addItem(doctor); // Agregar objeto Doctor al combo box
+            if (!addedDoctorIds.contains(doctor.getIdDoctor())) {
+                vista.comboDoctor.addItem(doctor);
+                addedDoctorIds.add(doctor.getIdDoctor());
+            }
         }
     }
 
     public void limpiarDatosPaciente() {
         vista.etiquetaNombrePaciente.setText("");
-        // vista.deshabilitarBotonesOperaciones();
     }
 
     public void mostrarHistorialMedico() {
         // lógica para mostrar historial médico
     }
 
-    public void registrarCita() {
-        JDateChooser fecha = vista.fechaCita;
-        String turno = vista.getTurno();
-        Doctor doctorSeleccionado = (Doctor) vista.comboDoctor.getSelectedItem(); // Obtener el doctor seleccionado del combo box
-        int idDoctor = doctorSeleccionado.getIdDoctor();
-        int idPaciente = paciente.getIdPaciente();
+    private boolean isRegistering = false;
 
-        // Obtener la lista de citas del doctor para la fecha y turno especificados
-        List<Cita> citas = citaDAO.obtenerCitasPorDoctorFechaTurno(idDoctor, new java.sql.Date(fecha.getDate().getTime()), turno);
+    public synchronized void registrarCita() {
+        System.out.println("Iniciando registrarCita()");
 
-        // Verificar si ya hay 10 citas para ese doctor en esa fecha y turno
-        if (citas.size() >= 10) {
-            vista.mostrarMensaje("No hay turnos disponibles para este doctor en este turno");
+        if (isRegistering) {
+            System.out.println("Intento de registro mientras ya se está registrando una cita.");
             return;
         }
+        isRegistering = true;
 
-        // Calcular el número de turno de la nueva cita
-        int numeroTurno = citas.size() + 1;
+        // Eliminar listeners antes de intentar registrar
+        if (fechaCitaListener != null) {
+            vista.fechaCita.getDateEditor().removePropertyChangeListener(fechaCitaListener);
+        }
+        if (turnoListener != null) {
+            vista.comboTurno.removeActionListener(turnoListener);
+        }
 
-        // Crear una nueva instancia de Cita
-        Cita cita = new Cita();
-        cita.setIdPaciente(idPaciente);
-        cita.setIdDoctor(idDoctor);
-        cita.setFecha(fecha.getDate());
-        cita.setTurno(turno);
-        cita.setEstado("pendiente");  // O el estado inicial que consideres adecuado
-        cita.setNumTurno(numeroTurno);
-        cita.setDetalle("");  // O cualquier detalle inicial que consideres adecuado
-        cita.setDiagnostico("");  // O cualquier diagnóstico inicial que consideres adecuado
+        try {
+            JDateChooser fecha = vista.fechaCita;
+            if (fecha.getDate() == null) {
+                vista.mostrarMensaje("Verificar, para continuar.");
+                System.out.println("Fecha no seleccionada.");
+                return;
+            }
+            String turno = vista.getTurno();
+            Doctor doctorSeleccionado = (Doctor) vista.comboDoctor.getSelectedItem();
+            if (doctorSeleccionado == null) {
+                vista.mostrarMensaje("Por favor, seleccione un doctor.");
+                System.out.println("Doctor no seleccionado.");
+                return;
+            }
 
-        // Guardar la cita en la base de datos
-        boolean exito = citaDAO.insertarCita(cita);
+            int idDoctor = doctorSeleccionado.getIdDoctor();
+            int idPaciente = paciente.getIdPaciente();
+            String detalle = vista.getDetalle();
 
-        // Mostrar un mensaje en la vista según el resultado de la operación
-        if (exito) {
-            vista.mostrarMensaje("Cita registrada exitosamente");
-        } else {
-            vista.mostrarMensaje("Error al registrar la cita");
+            // Obtener la lista de citas del doctor para la fecha y turno especificados
+            List<Cita> citas = citaDAO.obtenerCitasPorDoctorFechaTurno(idDoctor, new java.sql.Date(fecha.getDate().getTime()), turno);
+
+            // Verificar si ya hay 10 citas para ese doctor en esa fecha y turno
+            if (citas.size() >= 10) {
+                vista.mostrarMensaje("No hay turnos disponibles para este doctor en este turno");
+                System.out.println("No hay turnos disponibles.");
+                return;
+            }
+
+            // Calcular el número de turno de la nueva cita
+            int numeroTurno = citas.size() + 1;
+
+            // Crear una nueva instancia de Cita
+            Cita cita = new Cita();
+            cita.setIdPaciente(idPaciente);
+            cita.setIdDoctor(idDoctor);
+            cita.setFecha(new java.sql.Date(fecha.getDate().getTime())); // Convertir java.util.Date a java.sql.Date
+            cita.setTurno(turno);
+            cita.setEstado("pendiente");
+            cita.setNumTurno(numeroTurno);
+            cita.setDetalle(detalle);
+            cita.setDiagnostico("");
+
+            // Guardar la cita en la base de datos
+            boolean exito = citaDAO.insertarCita(cita);
+
+            // Mostrar un mensaje en la vista según el resultado de la operación
+            if (exito) {
+                vista.mostrarMensaje("Cita registrada exitosamente");
+                limpiarCampos(); // Limpiar los campos después del registro
+                System.out.println("Cita registrada exitosamente.");
+                closeDialog(); // Cerrar el JDialog después del registro exitoso
+            } else {
+                vista.mostrarMensaje("Error al registrar la cita");
+                System.out.println("Error al registrar la cita.");
+            }
+        } finally {
+            isRegistering = false;
+            System.out.println("isRegistering restablecido a false.");
         }
     }
 
+    private void limpiarCampos() {
+        vista.comboDoctor.removeAllItems();
+        vista.comboTurno.setSelectedIndex(0);
+        vista.fechaCita.setDate(null);
+        vista.textAreaDetallesCita.setText("");
+    }
+
+    private void closeDialog() {
+        // Cerrar el JDialog
+        vista.dispose();
+    }
 }

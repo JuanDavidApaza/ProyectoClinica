@@ -1,6 +1,7 @@
 package Controlador;
 
 import Modelo.DAO.CitaDAO;
+import Modelo.DAO.DoctorDAO;
 import Modelo.DAO.HorarioDoctorDAO;
 import Modelo.DAO.PacienteDAO;
 import Modelo.Paciente;
@@ -88,7 +89,8 @@ public class CtrlPacienteRegistrado {
         Paciente paciente = pacienteDAO.obtenerPacienteRegistrado(dni);
         if (paciente != null) {
             VentanaRegistroCitaJDialog ventanaRegistroCitaJDialog = new VentanaRegistroCitaJDialog(null, true);
-            new CtrlRegistrarCita(ventanaRegistroCitaJDialog, citaDAO, pacienteDAO, horarioDoctorDAO, paciente);
+            DoctorDAO doctorDAO = new DoctorDAO();
+            new CtrlRegistrarCita(ventanaRegistroCitaJDialog, citaDAO, pacienteDAO, horarioDoctorDAO, paciente,doctorDAO);
             ventanaRegistroCitaJDialog.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(null, "Paciente no encontrado");
