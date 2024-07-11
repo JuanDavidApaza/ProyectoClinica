@@ -17,7 +17,7 @@ public class VentanaTrabajador extends javax.swing.JFrame {
      */
     public VentanaTrabajador(){
         initComponents();
-        setSize(1200, 700);
+        setSize(1250, 700);
         setResizable(false);
         setLocationRelativeTo(null);
         

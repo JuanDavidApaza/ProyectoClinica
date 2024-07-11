@@ -17,7 +17,7 @@ public class VentanaPacienteRegistrado extends javax.swing.JFrame {
      */
     public VentanaPacienteRegistrado(){
         initComponents();
-        setSize(1200, 700);
+        setSize(1250, 700);
         setResizable(false);
         setLocationRelativeTo(null);
         
@@ -70,17 +70,17 @@ public class VentanaPacienteRegistrado extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Modificar Datos");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 380, -1, -1));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 380, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Registrar cita");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 380, -1, 30));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 380, -1, 30));
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Historial Medico");
-        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, -1, -1));
+        jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 380, -1, -1));
 
         etiquetaNombrePaciente.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         etiquetaNombrePaciente.setForeground(new java.awt.Color(0, 0, 255));
@@ -114,15 +114,15 @@ public class VentanaPacienteRegistrado extends javax.swing.JFrame {
                 btnRegistrarCitaActionPerformed(evt);
             }
         });
-        jPanel1.add(btnRegistrarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, 150, 150));
+        jPanel1.add(btnRegistrarCita, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 220, 150, 150));
 
         btnHistorialMedico.setBackground(new java.awt.Color(0, 102, 102));
         btnHistorialMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/informe-medico.png"))); // NOI18N
-        jPanel1.add(btnHistorialMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 220, 150, 140));
+        jPanel1.add(btnHistorialMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(530, 220, 150, 140));
 
         btnModificarDatos.setBackground(new java.awt.Color(0, 102, 102));
         btnModificarDatos.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/documento.png"))); // NOI18N
-        jPanel1.add(btnModificarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(910, 220, -1, -1));
+        jPanel1.add(btnModificarDatos, new org.netbeans.lib.awtextra.AbsoluteConstraints(930, 220, -1, -1));
 
         jPanel2.setBackground(new java.awt.Color(0, 102, 102));
 

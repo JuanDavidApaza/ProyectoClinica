@@ -7,6 +7,7 @@ import Modelo.DAO.PacienteDAO;
 import Modelo.Paciente;
 import Vista.ModificarPacienteJDialog;
 import Vista.VentanaPacienteRegistrado;
+import Vista.VentanaPago;
 import Vista.VentanaRegistroCitaJDialog;
 import Vista.VentanaTrabajador;
 
@@ -19,22 +20,30 @@ public class CtrlPacienteRegistrado {
     private final CitaDAO citaDAO;
     private final HorarioDoctorDAO horarioDoctorDAO;
     private final VentanaTrabajador ventanaTrabajador;
+    
+    //pago
+    private final VentanaPago ventanaPago;
 
-    public CtrlPacienteRegistrado(VentanaPacienteRegistrado ventanaPacienteRegistrado, PacienteDAO pacienteDAO, CitaDAO citaDAO, HorarioDoctorDAO horarioDoctorDAO, VentanaTrabajador ventanaTrabajador) {
+    public CtrlPacienteRegistrado(VentanaPacienteRegistrado ventanaPacienteRegistrado, PacienteDAO pacienteDAO, CitaDAO citaDAO, HorarioDoctorDAO horarioDoctorDAO, VentanaTrabajador ventanaTrabajador, VentanaPago ventanaPago) {
         this.ventanaPacienteRegistrado = ventanaPacienteRegistrado;
         this.pacienteDAO = pacienteDAO;
         this.citaDAO = citaDAO;
         this.horarioDoctorDAO = horarioDoctorDAO;
         this.ventanaTrabajador = ventanaTrabajador;
 
+        this.ventanaPago = ventanaPago;
+        
         this.ventanaPacienteRegistrado.setVisible(true);
         this.ventanaPacienteRegistrado.setLocationRelativeTo(null);
+        
+        
 
         this.ventanaPacienteRegistrado.btnBuscarPacienteDNI.addActionListener(e -> buscarPacientePorDNI());
         this.ventanaPacienteRegistrado.btnHistorialMedico.addActionListener(e -> mostrarHistorialMedico());
         this.ventanaPacienteRegistrado.btnModificarDatos.addActionListener(e -> modificarDatosPaciente());
         this.ventanaPacienteRegistrado.btnRegistrarCita.addActionListener(e -> registrarCita());
         this.ventanaPacienteRegistrado.btnIraPaciente.addActionListener(e -> regresarVentanaTrabajador());
+        this.ventanaPacienteRegistrado.btnIraPago.addActionListener(e -> irAPago());
 
         // Deshabilitar botones al inicio
         deshabilitarBotonesOperaciones();
@@ -100,5 +109,11 @@ public class CtrlPacienteRegistrado {
     private void regresarVentanaTrabajador() {
         ventanaPacienteRegistrado.dispose();
         ventanaTrabajador.setVisible(true);
+    }
+    
+    private void irAPago(){
+        ventanaPacienteRegistrado.dispose();
+        new CtrlPago(ventanaPago);
+        ventanaPago.setVisible(true);
     }
 }

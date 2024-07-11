@@ -25,18 +25,25 @@ public class CtrlTrabajador {
         this.ventanaTrabajador.btnPacienteReg.addActionListener(e -> mostrarVentanaPacienteRegistrado());
         this.ventanaTrabajador.btnPacienteInvit.addActionListener(e -> mostrarVentanaRegistrarPacienteInvitado());
         this.ventanaTrabajador.btnNuevoPaciente.addActionListener(e -> mostrarVentanaRegistrarNuevoPaciente());
+        this.ventanaTrabajador.btnIraPago.addActionListener(e -> mostrarVentanaPago());
     }
 
+    private void mostrarVentanaPago(){
+        VentanaPago ventanaPago = new VentanaPago();
+        ventanaTrabajador.dispose();
+        ventanaPago.setVisible(true);
+    }
     private void mostrarVentanaPacienteRegistrado() {
         ventanaTrabajador.dispose(); // Cierra la ventana de trabajador
         VentanaPacienteRegistrado ventanaPacienteRegistrado = new VentanaPacienteRegistrado();
+        VentanaPago ventanaPago = new VentanaPago();
         
         Connection connection = null;
         try {
             connection = Conexion.Conexion.getConnection();
             HorarioDoctorDAO horarioDoctorDAO = new HorarioDoctorDAO(connection);
             CitaDAO citaDAO = new CitaDAO(connection);
-            new CtrlPacienteRegistrado(ventanaPacienteRegistrado, pacienteDAO, citaDAO, horarioDoctorDAO, ventanaTrabajador);
+            new CtrlPacienteRegistrado(ventanaPacienteRegistrado, pacienteDAO, citaDAO, horarioDoctorDAO, ventanaTrabajador,ventanaPago);
             ventanaPacienteRegistrado.setVisible(true);
         } catch (SQLException ex) {
             Logger.getLogger(CtrlTrabajador.class.getName()).log(Level.SEVERE, null, ex);

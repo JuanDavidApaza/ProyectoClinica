@@ -17,7 +17,7 @@ public class VentanaDoctor extends javax.swing.JFrame {
      */
     public VentanaDoctor() {
         initComponents();
-        setSize(1200, 700);
+        setSize(1250, 700);
         setResizable(false);
         setLocationRelativeTo(null);
         
@@ -56,15 +56,20 @@ public class VentanaDoctor extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         btnEnviarDiagnostico = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
-        btnGenerarPdf = new javax.swing.JButton();
+        btnVerDetalles = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
         jLabel1.setFont(new java.awt.Font("Segoe UI Semibold", 1, 36)); // NOI18N
         jLabel1.setText("CITAS");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(560, 20, 130, -1));
 
         btnBuscarCitaDni.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
         btnBuscarCitaDni.setText("Buscar");
+        jPanel1.add(btnBuscarCitaDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 139, -1, -1));
+        jPanel1.add(cajaDni, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 146, 358, -1));
 
         tablaCitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,6 +84,8 @@ public class VentanaDoctor extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tablaCitas);
 
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 203, 680, 333));
+
         btnVerHistorialMedico.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
         btnVerHistorialMedico.setText("Ver Historial Medico");
         btnVerHistorialMedico.addActionListener(new java.awt.event.ActionListener() {
@@ -86,13 +93,17 @@ public class VentanaDoctor extends javax.swing.JFrame {
                 btnVerHistorialMedicoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnVerHistorialMedico, new org.netbeans.lib.awtextra.AbsoluteConstraints(52, 571, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
         jLabel2.setText("Detallar Diagnostico: ");
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 200, -1, -1));
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jScrollPane2.setViewportView(jTextArea1);
+
+        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 274, 290, 150));
 
         btnEnviarDiagnostico.setBackground(new java.awt.Color(0, 255, 51));
         btnEnviarDiagnostico.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
@@ -103,86 +114,14 @@ public class VentanaDoctor extends javax.swing.JFrame {
                 btnEnviarDiagnosticoActionPerformed(evt);
             }
         });
+        jPanel1.add(btnEnviarDiagnostico, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 450, 179, 52));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
         jLabel3.setText("Ingresar DNI: ");
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 101, -1, -1));
 
-        btnGenerarPdf.setBackground(new java.awt.Color(255, 0, 0));
-        btnGenerarPdf.setFont(new java.awt.Font("Segoe UI Semibold", 1, 18)); // NOI18N
-        btnGenerarPdf.setText("Generar PDF -Imprimir");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(52, 52, 52)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(108, 108, 108)
-                        .addComponent(btnBuscarCitaDni)
-                        .addGap(26, 26, 26)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(cajaDni, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 672, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(101, 101, 101)
-                                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 257, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel1Layout.createSequentialGroup()
-                                        .addGap(146, 146, 146)
-                                        .addComponent(btnEnviarDiagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 100, Short.MAX_VALUE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(111, 111, 111)
-                                .addComponent(jLabel2)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btnVerHistorialMedico)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btnGenerarPdf, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(294, 294, 294))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel1)
-                .addGap(535, 535, 535))
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGap(47, 47, 47)
-                        .addComponent(jLabel3)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(cajaDni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnBuscarCitaDni))
-                        .addGap(32, 32, 32)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(203, 203, 203)
-                        .addComponent(jLabel2)
-                        .addGap(39, 39, 39)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(btnEnviarDiagnostico, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addGap(35, 35, 35)
-                .addComponent(btnVerHistorialMedico)
-                .addGap(64, 64, 64))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btnGenerarPdf, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35))
-        );
+        btnVerDetalles.setText("Ver Detalles");
+        jPanel1.add(btnVerDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 550, -1, -1));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -244,7 +183,7 @@ public class VentanaDoctor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnBuscarCitaDni;
     public javax.swing.JButton btnEnviarDiagnostico;
-    public javax.swing.JButton btnGenerarPdf;
+    public javax.swing.JButton btnVerDetalles;
     private javax.swing.JButton btnVerHistorialMedico;
     public javax.swing.JTextField cajaDni;
     private javax.swing.JLabel jLabel1;
