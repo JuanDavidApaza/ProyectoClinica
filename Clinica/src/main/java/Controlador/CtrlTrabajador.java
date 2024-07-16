@@ -31,6 +31,7 @@ public class CtrlTrabajador {
     private void mostrarVentanaPago(){
         VentanaPago ventanaPago = new VentanaPago();
         ventanaTrabajador.dispose();
+        new CtrlPago(ventanaPago);
         ventanaPago.setVisible(true);
     }
     private void mostrarVentanaPacienteRegistrado() {

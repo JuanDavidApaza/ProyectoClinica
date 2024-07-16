@@ -4,7 +4,9 @@ C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\DAO
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\HistorialMedico.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\Trabajador.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Conexion\Conexion.java
+C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Controlador\CtrlPago.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Vista\VentanaPago.java
+C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\DAO\PagoDAO.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Vista\VentanaAdministrador.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Controlador\CtrlRegistrarPacienteInvitado.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Controlador\CtrlTrabajador.java
@@ -20,6 +22,7 @@ C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\DAO
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\DAO\PacienteDAO.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Vista\VentanaTrabajador.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\DAO\DoctorDAO.java
+C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\DAO\EmailSender.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Modelo\Pago.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Vista\ModificarPacienteJDialog.java
 C:\Users\51934\Documents\GitHub\ProyectoClinica\Clinica\src\main\java\Controlador\CtrlPrincipal.java

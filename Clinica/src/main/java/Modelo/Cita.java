@@ -12,6 +12,7 @@ public class Cita {
     private int numTurno;
     private String detalle;
     private String diagnostico;
+    private String nombreDoctor;
 
     public Cita() {}
 
@@ -26,6 +27,29 @@ public class Cita {
         this.detalle = detalle;
         this.diagnostico = diagnostico;
     }
+
+    public Cita(int idCita, int idPaciente, int idDoctor, Date fecha, String turno, String estado, int numTurno, String detalle, String diagnostico, String nombreDoctor) {
+        this.idCita = idCita;
+        this.idPaciente = idPaciente;
+        this.idDoctor = idDoctor;
+        this.fecha = fecha;
+        this.turno = turno;
+        this.estado = estado;
+        this.numTurno = numTurno;
+        this.detalle = detalle;
+        this.diagnostico = diagnostico;
+        this.nombreDoctor = nombreDoctor;
+    }
+
+    public String getNombreDoctor() {
+        return nombreDoctor;
+    }
+
+    public void setNombreDoctor(String nombreDoctor) {
+        this.nombreDoctor = nombreDoctor;
+    }
+    
+    
 
     
 

@@ -213,5 +213,39 @@ public class PacienteDAO {
             return false;
         }
     }
+     
+       public Paciente obtenerPacientePorId(int idPaciente) {
+        String sql = "SELECT p.DNI, p.Nombre, p.Apellido, p.Direccion, p.Telefono, p.Email, p.Sexo, p.Edad, p.Pais, pa.Tipo " +
+                     "FROM persona p " +
+                     "JOIN paciente pa ON p.DNI = pa.DNI_fk " +
+                     "WHERE pa.IDPaciente = ?";
+        try {
+            PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setInt(1, idPaciente);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                String dni = resultSet.getString("DNI");
+                String nombre = resultSet.getString("Nombre");
+                String apellido = resultSet.getString("Apellido");
+                String direccion = resultSet.getString("Direccion");
+                String telefono = resultSet.getString("Telefono");
+                String email = resultSet.getString("Email");
+                String sexo = resultSet.getString("Sexo");
+                int edad = resultSet.getInt("Edad");
+                String pais = resultSet.getString("Pais");
+                String tipo = resultSet.getString("Tipo");
+
+                return new Paciente(dni, nombre, apellido, direccion, telefono, email, sexo, edad, pais, idPaciente, tipo);
+            } else {
+                return null;
+            }
+
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return null;
+        }
+    }
 
 }

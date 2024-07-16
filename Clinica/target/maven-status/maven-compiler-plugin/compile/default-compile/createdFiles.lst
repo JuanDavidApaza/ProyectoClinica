@@ -7,12 +7,11 @@ Vista\HistorialMedicoJDialog$3$1.class
 Vista\VentanaPago$4.class
 Vista\RegistrarNuevoPacienteJdialog$1.class
 Vista\VentanaPacienteRegistrado$2.class
-Controlador\CtrlPago$2.class
 Vista\RegistrarNuevoPacienteJdialog$5.class
 Vista\VentanaTrabajador$1.class
 Vista\RegistrarPacienteInvitadoJdialog$1.class
+Modelo\DAO\EmailSender.class
 Modelo\Paciente.class
-Controlador\CtrlPago$5.class
 Vista\VentanaPago$1.class
 Vista\VentanaRegistroCitaJDialog.class
 Vista\RegistrarNuevoPacienteJdialog$2.class
@@ -26,7 +25,7 @@ Vista\VentanaDoctor$1.class
 Vista\RegistrarNuevoPacienteJdialog$4.class
 Vista\VentanaRegistroCitaJDialog$2$1.class
 Vista\RegistrarPacienteInvitadoJdialog$3.class
-Controlador\CtrlPago$6.class
+Modelo\DAO\EmailSender$1.class
 Vista\VentanaRegistroCitaJDialog$1.class
 Vista\VentanaDoctor$2.class
 Vista\ModificarPacienteJDialog$2.class
@@ -47,7 +46,6 @@ Vista\ModificarPacienteJDialog$4.class
 Controlador\CtrlPago.class
 Controlador\CtrlPacienteRegistrado.class
 Modelo\Doctor.class
-Controlador\CtrlPago$3.class
 Vista\HistorialMedicoJDialog$1.class
 Vista\RegistrarNuevoPacienteJdialog$5$1.class
 Vista\RegistrarPacienteInvitadoJdialog$6.class
@@ -61,7 +59,6 @@ Modelo\Persona.class
 Vista\ValidarDatosReniec.class
 Modelo\Trabajador.class
 Controlador\LoginController.class
-Controlador\CtrlPago$1.class
 Vista\HistorialMedicoJDialog$3.class
 Vista\VentanaPago$3.class
 Vista\VentanaTrabajador.class
@@ -71,7 +68,6 @@ Controlador\CtrlModificarPaciente.class
 Modelo\DAO\TrabajadorDAO.class
 Modelo\Cita.class
 Vista\VentanaDoctor$3.class
-Controlador\CtrlPago$4.class
 Vista\VentanaPago.class
 Controlador\CtrlPrincipal.class
 Modelo\HistorialMedico.class
@@ -83,3 +79,4 @@ Vista\VentanaTrabajador$2.class
 Controlador\CtrlRegistrarCita.class
 Vista\VentanaAdministrador$1.class
 Vista\RegistrarPacienteInvitadoJdialog$5.class
+Modelo\DAO\PagoDAO.class
