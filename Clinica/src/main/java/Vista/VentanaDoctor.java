@@ -53,10 +53,11 @@ public class VentanaDoctor extends javax.swing.JFrame {
         btnVerHistorialMedico = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        diagnosticoText = new javax.swing.JTextArea();
         btnEnviarDiagnostico = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnVerDetalles = new javax.swing.JButton();
+        btnPrintVoucher = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -73,13 +74,13 @@ public class VentanaDoctor extends javax.swing.JFrame {
 
         tablaCitas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
             },
             new String [] {
-                "Nombre", "DNI", "Detalle", "Horario", "Turno"
+                "ID", "Nombre", "DNI", "Detalle", "Horario", "Turno", "Tipo"
             }
         ));
         jScrollPane1.setViewportView(tablaCitas);
@@ -99,9 +100,9 @@ public class VentanaDoctor extends javax.swing.JFrame {
         jLabel2.setText("Detallar Diagnostico: ");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(860, 200, -1, -1));
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        diagnosticoText.setColumns(20);
+        diagnosticoText.setRows(5);
+        jScrollPane2.setViewportView(diagnosticoText);
 
         jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(825, 274, 290, 150));
 
@@ -114,7 +115,7 @@ public class VentanaDoctor extends javax.swing.JFrame {
                 btnEnviarDiagnosticoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnEnviarDiagnostico, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 450, 179, 52));
+        jPanel1.add(btnEnviarDiagnostico, new org.netbeans.lib.awtextra.AbsoluteConstraints(890, 440, 179, 52));
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 24)); // NOI18N
         jLabel3.setText("Ingresar DNI: ");
@@ -122,6 +123,16 @@ public class VentanaDoctor extends javax.swing.JFrame {
 
         btnVerDetalles.setText("Ver Detalles");
         jPanel1.add(btnVerDetalles, new org.netbeans.lib.awtextra.AbsoluteConstraints(620, 550, -1, -1));
+
+        btnPrintVoucher.setBackground(new java.awt.Color(255, 0, 0));
+        btnPrintVoucher.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        btnPrintVoucher.setText("Generar Diagnostico");
+        btnPrintVoucher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPrintVoucherActionPerformed(evt);
+            }
+        });
+        jPanel1.add(btnPrintVoucher, new org.netbeans.lib.awtextra.AbsoluteConstraints(900, 520, 170, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,6 +155,10 @@ public class VentanaDoctor extends javax.swing.JFrame {
     private void btnEnviarDiagnosticoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEnviarDiagnosticoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_btnEnviarDiagnosticoActionPerformed
+
+    private void btnPrintVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintVoucherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnPrintVoucherActionPerformed
 
     /**
      * @param args the command line arguments
@@ -183,16 +198,17 @@ public class VentanaDoctor extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnBuscarCitaDni;
     public javax.swing.JButton btnEnviarDiagnostico;
+    public javax.swing.JButton btnPrintVoucher;
     public javax.swing.JButton btnVerDetalles;
-    private javax.swing.JButton btnVerHistorialMedico;
+    public javax.swing.JButton btnVerHistorialMedico;
     public javax.swing.JTextField cajaDni;
+    public javax.swing.JTextArea diagnosticoText;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    public javax.swing.JTextArea jTextArea1;
     public javax.swing.JTable tablaCitas;
     // End of variables declaration//GEN-END:variables
 }

@@ -1,47 +1,4 @@
 package Modelo.DAO;
-//
-//
-////public class EmailSender {
-////
-////    public static void enviarEmailPago(String nombrePaciente, String horaPago) {
-////        //qvfp falk lbtv fsgm
-////        final String username = ; // Tu correo
-////        final String password = "qvfpfalklbtvfsgm"; // Contraseña de la aplicación (no la contraseña normal)
-////
-////        Properties props = new Properties();
-////        props.put("mail.smtp.auth", "true");
-////        props.put("mail.smtp.starttls.enable", "true");
-////        props.put("mail.smtp.host", "smtp.gmail.com");
-////        props.put("mail.smtp.port", "587");
-////
-////        Session session = Session.getInstance(props,
-////          new javax.mail.Authenticator() {
-////            protected PasswordAuthentication getPasswordAuthentication() {
-////                return new PasswordAuthentication(username, password);
-////            }
-////          });
-////
-////        try {
-////            Message message = new MimeMessage(session);
-////            message.setFrom(new InternetAddress("sielgringoquichh@gmail.com"));
-////            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse());
-////            message.setSubject("Pago de Cita Realizado");
-////            message.setText("Se ha realizado el pago de la cita.\n\n" +
-////                            "Nombre del paciente: " + nombrePaciente + "\n" +
-////                            "Monto: 10 soles\n" +
-////                            "Hora del pago: " + horaPago);
-////
-////            Transport.send(message);
-////
-////            System.out.println("Correo enviado correctamente.");
-////
-////        } catch (MessagingException e) {
-////            throw new RuntimeException(e);
-////        }
-////    }
-////}
-//
-//
 import Modelo.Paciente;
 import Modelo.Cita;
 import Modelo.Pago;
@@ -117,4 +74,45 @@ public class EmailSender {
             mex.printStackTrace();
         }
     }
+  public static void enviarEmailDiagnostico(String to, String diagnostico, Date fecha, String nombreDoctor) {
+        String from = "sielgringoquichh@gmail.com";
+        final String username = "sielgringoquichh@gmail.com";
+        final String password = "qvfpfalklbtvfsgm";
+
+        String host = "smtp.gmail.com";
+
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", "587");
+
+        Session session = Session.getInstance(props, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(username, password);
+            }
+        });
+
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(from));
+            message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(to));
+            message.setSubject("Diagnóstico Médico");
+            message.setText("Estimado paciente,\n\n"
+                    + "Le informamos su diagnóstico médico:\n"
+                    + "Diagnóstico: " + diagnostico + "\n"
+                    + "Fecha de la consulta: " + fecha + "\n"
+                    + "Doctor: " + nombreDoctor + "\n\n"
+                    + "Saludos,\n"
+                    + "Clinica ");
+
+            Transport.send(message);
+
+            System.out.println("Email enviado exitosamente...");
+
+        } catch (MessagingException e) {
+            throw new RuntimeException(e);
+        }
+    
+  }
 }

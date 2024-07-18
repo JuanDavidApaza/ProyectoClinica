@@ -5,6 +5,7 @@ import Modelo.DAO.DoctorDAO;
 import Modelo.Trabajador;
 import Modelo.Doctor;
 import Vista.Login;
+import Vista.VentanaDoctor;
 import javax.swing.JOptionPane;
 
 public class LoginController {
@@ -34,8 +35,15 @@ public class LoginController {
             JOptionPane.showMessageDialog(loginView, "Bienvenido " + trabajador.getRol());
             ctrlPrincipal.configurarInterfaz(trabajador.getRol());
         } else if (doctor != null) {
-            JOptionPane.showMessageDialog(loginView, "Bienvenido Doctor " + doctor.getUsuario());
-            ctrlPrincipal.configurarInterfaz("Doctor");
+//            JOptionPane.showMessageDialog(loginView, "Bienvenido Doctor " + doctor.getUsuario());
+//            ctrlPrincipal.configurarInterfaz("Doctor");
+            
+            
+             JOptionPane.showMessageDialog(loginView, "Bienvenido Doctor " + doctor.getUsuario());
+            VentanaDoctor ventanaDoctor = new VentanaDoctor();
+            CtrlVentanaDoctor ctrlVentanaDoctor = new CtrlVentanaDoctor(ventanaDoctor, doctor.getIdDoctor());
+            loginView.dispose();
+            ventanaDoctor.setVisible(true);
         } else {
             JOptionPane.showMessageDialog(loginView, "Usuario o contraseña incorrectos");
         }

@@ -12,7 +12,10 @@ public class Cita {
     private int numTurno;
     private String detalle;
     private String diagnostico;
+    private String nombrePaciente;
+    private String dniPaciente;
     private String nombreDoctor;
+    private String tipoPaciente;
 
     public Cita() {}
 
@@ -41,18 +44,25 @@ public class Cita {
         this.nombreDoctor = nombreDoctor;
     }
 
-    public String getNombreDoctor() {
-        return nombreDoctor;
-    }
-
-    public void setNombreDoctor(String nombreDoctor) {
+    public Cita(int idCita, int idPaciente, int idDoctor, Date fecha, String turno, String estado, int numTurno, String detalle, String diagnostico, String nombrePaciente, String dniPaciente, String nombreDoctor, String tipoPaciente) {
+        this.idCita = idCita;
+        this.idPaciente = idPaciente;
+        this.idDoctor = idDoctor;
+        this.fecha = fecha;
+        this.turno = turno;
+        this.estado = estado;
+        this.numTurno = numTurno;
+        this.detalle = detalle;
+        this.diagnostico = diagnostico;
+        this.nombrePaciente = nombrePaciente;
+        this.dniPaciente = dniPaciente;
         this.nombreDoctor = nombreDoctor;
+        this.tipoPaciente = tipoPaciente;
     }
     
     
 
-    
-
+    // Getters y setters
     public int getIdCita() {
         return idCita;
     }
@@ -124,7 +134,38 @@ public class Cita {
     public void setNumTurno(int numTurno) {
         this.numTurno = numTurno;
     }
-    
+
+    public String getNombrePaciente() {
+        return nombrePaciente;
+    }
+
+    public void setNombrePaciente(String nombrePaciente) {
+        this.nombrePaciente = nombrePaciente;
+    }
+
+    public String getDniPaciente() {
+        return dniPaciente;
+    }
+
+    public void setDniPaciente(String dniPaciente) {
+        this.dniPaciente = dniPaciente;
+    }
+
+    public String getNombreDoctor() {
+        return nombreDoctor;
+    }
+
+    public void setNombreDoctor(String nombreDoctor) {
+        this.nombreDoctor = nombreDoctor;
+    }
+
+    public String getTipoPaciente() {
+        return tipoPaciente;
+    }
+
+    public void setTipoPaciente(String tipoPaciente) {
+        this.tipoPaciente = tipoPaciente;
+    }
     
     
 }

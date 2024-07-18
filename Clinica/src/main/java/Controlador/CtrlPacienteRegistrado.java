@@ -2,9 +2,11 @@ package Controlador;
 
 import Modelo.DAO.CitaDAO;
 import Modelo.DAO.DoctorDAO;
+import Modelo.DAO.HistorialMedicoDAO;
 import Modelo.DAO.HorarioDoctorDAO;
 import Modelo.DAO.PacienteDAO;
 import Modelo.Paciente;
+import Vista.HistorialMedicoJDialog;
 import Vista.ModificarPacienteJDialog;
 import Vista.VentanaPacienteRegistrado;
 import Vista.VentanaPago;
@@ -83,7 +85,21 @@ public class CtrlPacienteRegistrado {
     }
 
     private void mostrarHistorialMedico() {
-        // logica
+        String dni = ventanaPacienteRegistrado.cajaDni.getText();
+        if (!dni.isEmpty()) {
+            Paciente paciente = pacienteDAO.obtenerPacienteRegistrado(dni);
+            if (paciente != null) {
+                HistorialMedicoJDialog historialDialog = new HistorialMedicoJDialog(null, true);
+                HistorialMedicoDAO historialDAO = new HistorialMedicoDAO();
+                CtrlHistorialMedico ctrlHistorial = new CtrlHistorialMedico(historialDialog, historialDAO, paciente);
+                ctrlHistorial.init();
+                historialDialog.setVisible(true);
+            } else {
+                JOptionPane.showMessageDialog(null, "Paciente no encontrado");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "Ingrese un DNI válido");
+        }
     }
 
     private void modificarDatosPaciente() {
