@@ -15,7 +15,7 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
      * Creates new form VentanaRegistroCitaJDialog
      */
     public VentanaRegistroCitaJDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+        super(parent, false); //era modal
         initComponents();
         setSize(780, 450);
         setResizable(false);

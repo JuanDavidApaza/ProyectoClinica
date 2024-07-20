@@ -100,11 +100,11 @@ public class EmailSender {
             message.setSubject("Diagnóstico Médico");
             message.setText("Estimado paciente,\n\n"
                     + "Le informamos su diagnóstico médico:\n"
-                    + "Diagnóstico: " + diagnostico + "\n"
+                    + "Diagnóstico: " + diagnostico + "\n\n"
                     + "Fecha de la consulta: " + fecha + "\n"
                     + "Doctor: " + nombreDoctor + "\n\n"
                     + "Saludos,\n"
-                    + "Clinica ");
+                    + "Clinica Salud y Esperanza");
 
             Transport.send(message);
 

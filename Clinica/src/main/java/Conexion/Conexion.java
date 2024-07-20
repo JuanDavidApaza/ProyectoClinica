@@ -51,7 +51,7 @@ public class Conexion {
         }
     }
 
-    // Optional: If you want to test the connection
+   
     public static void main(String[] args) {
         try (Connection conn = getConnection()) {
             if (conn != null) {

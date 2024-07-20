@@ -1,0 +1,216 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="DiagnosticoReport" language="groovy" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="ae5b1278-0975-496f-80c4-93e23b34d208">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="163"/>
+	<property name="ireport.y" value="27"/>
+	<parameter name="id_cita" class="java.lang.Integer">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT 
+    c.IDCita, 
+    c.Fecha, 
+    c.Turno, 
+    c.NumeroTurno, 
+    c.Estado, 
+    c.Detalle, 
+    c.Diagnostico, 
+    p.DNI AS dniPaciente, 
+    CONCAT(p.Nombre, ' ', p.Apellido) AS nombreCompletoPaciente, 
+    d.DNI_fk AS dniDoctor, 
+    CONCAT(p2.Nombre, ' ', p2.Apellido) AS nombreDoctor, 
+    d.Especialidad
+FROM 
+    cita c
+JOIN 
+    paciente pa ON c.IDPaciente_fk2 = pa.IDPaciente
+JOIN 
+    persona p ON pa.DNI_fk = p.DNI
+JOIN 
+    doctor d ON c.IDDoctor_fk = d.IDDoctor
+JOIN 
+    persona p2 ON d.DNI_fk = p2.DNI
+WHERE 
+    c.IDCita = $P!{id_cita};
+]]>
+	</queryString>
+	<field name="IDCita" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Fecha" class="java.sql.Date">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Turno" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="NumeroTurno" class="java.lang.Integer">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Estado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Detalle" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="Diagnostico" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="dniPaciente" class="java.lang.String"/>
+	<field name="nombreCompletoPaciente" class="java.lang.String"/>
+	<field name="dniDoctor" class="java.lang.String"/>
+	<field name="nombreDoctor" class="java.lang.String"/>
+	<field name="Especialidad" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="80" splitType="Stretch">
+			<image>
+				<reportElement x="68" y="-14" width="140" height="67" uuid="5b3196dc-72f4-4cfd-a3a4-cae65137a3bd"/>
+				<imageExpression><![CDATA["C:\\Users\\51934\\Documents\\GitHub\\ProyectoClinica\\Clinica\\src\\main\\resources\\images\\logoclinica (1).png"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="603" y="53" width="114" height="20" uuid="1637651e-43fb-40be-9384-bd36f2566108"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="603" y="33" width="76" height="20" uuid="3a23c70b-4f6d-40b8-a548-98c9c28f712f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Cita:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="13" y="53" width="268" height="26" uuid="3a01d5c7-1ad6-432e-a866-c3a0d8665bb1"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CLINICA SALUD Y ESPERANZA]]></text>
+			</staticText>
+			<image>
+				<reportElement x="732" y="7" width="84" height="62" uuid="0c8a220d-d875-4780-ac48-e79874a4a636"/>
+				<imageExpression><![CDATA["C:\\Users\\51934\\Documents\\GitHub\\ProyectoClinica\\Clinica\\src\\main\\resources\\images\\cita.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="302" y="23" width="190" height="46" uuid="f5abb390-371c-4172-a87c-d4e060527515"/>
+				<textElement>
+					<font fontName="CentSchbkCyrill BT" size="24"/>
+				</textElement>
+				<text><![CDATA[DIAGNOSTICO: ]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="4" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="370" splitType="Stretch">
+			<staticText>
+				<reportElement x="226" y="337" width="112" height="33" uuid="695e700b-1d18-45ac-92af-e7e1085dda73"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Doctor:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="332" y="337" width="132" height="33" uuid="2dfe84d8-f482-4539-962e-047daf22a89e"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreDoctor}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="23" y="97" width="100" height="30" uuid="c8939a94-b32f-4a50-8b90-80bab8cf42d2"/>
+				<textElement>
+					<font size="16"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{IDCita}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="13" y="62" width="129" height="35" uuid="cc9c781b-d2e1-4d8c-a40e-b99f75a757ef"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[N° CITA : ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="181" y="35" width="106" height="27" uuid="67a724ab-3938-4b3e-9e8b-4f4102f9e22c"/>
+				<textElement>
+					<font size="18" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Paciente:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="287" y="35" width="316" height="27" uuid="97da1057-350b-4c35-8990-74e2f0b9858f"/>
+				<textElement>
+					<font size="14" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{nombreCompletoPaciente}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="270" y="206" width="514" height="111" uuid="1b8d6c20-0bea-4969-b419-33959ef86fdc"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Diagnostico}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="287" y="97" width="316" height="93" uuid="765a65f4-2cc5-428c-b638-fc18594b0c9a"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{Detalle}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="175" y="99" width="106" height="28" uuid="67ad80f6-f16d-4b83-a25c-ae0772d5b10f"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Motivo Cita:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="142" y="206" width="116" height="26" uuid="b4d2b618-2941-477f-8866-9ef241158ad2"/>
+				<textElement>
+					<font size="16" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Diagnostico:]]></text>
+			</staticText>
+			<image>
+				<reportElement x="636" y="23" width="148" height="151" uuid="812a2787-548b-436f-96c4-7a06124cb134"/>
+				<imageExpression><![CDATA["C:\\Users\\51934\\Documents\\GitHub\\ProyectoClinica\\Clinica\\src\\main\\resources\\images\\informe-medico.png"]]></imageExpression>
+			</image>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="7" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="24" splitType="Stretch">
+			<textField>
+				<reportElement x="332" y="0" width="80" height="20" uuid="d0067a34-8d64-462d-80d4-4eee65c2404b"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="412" y="0" width="40" height="20" uuid="4af01f22-f5a8-49d3-beb4-05030a242baf"/>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="26" splitType="Stretch">
+			<staticText>
+				<reportElement x="603" y="0" width="147" height="20" uuid="9f2f3cb0-581d-4c1e-a2db-2b8219c2b837"/>
+				<text><![CDATA[Gracias por su preferencia:)]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

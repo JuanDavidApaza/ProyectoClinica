@@ -10,7 +10,7 @@ public class HistorialMedicoJDialog extends javax.swing.JDialog {
      * Creates new form HistorialMedicoDialog
      */
     public HistorialMedicoJDialog(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+        super(parent, false);
         initComponents();
         setResizable(false);
         setLocationRelativeTo(null);

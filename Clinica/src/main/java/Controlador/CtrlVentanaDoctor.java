@@ -144,7 +144,6 @@
 //        });
 //    }
 //}
-
 //package Controlador;
 //
 //import Modelo.DAO.CitaDAO;
@@ -344,13 +343,16 @@
 //        });
 //    }
 //}
-
-
 package Controlador;
 
+import Conexion.Conexion;
 import Modelo.DAO.CitaDAO;
 import Modelo.Cita;
 import Modelo.DAO.EmailSender;
+import Modelo.DAO.HistorialMedicoDAO;
+import Modelo.DAO.PacienteDAO;
+import Modelo.Paciente;
+import Vista.HistorialMedicoJDialog;
 import Vista.VentanaDoctor;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -358,9 +360,21 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import net.sf.jasperreports.engine.*;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class CtrlVentanaDoctor {
+
     private VentanaDoctor ventanaDoctor;
     private int idDoctor;
     private CitaDAO citaDAO;
@@ -414,6 +428,61 @@ public class CtrlVentanaDoctor {
                 cita.getTipoPaciente()
             };
             model.addRow(row);
+        }
+    }
+
+    public void generarPdf(int idCita) {
+        try {
+            Conexion con = new Conexion();
+            PreparedStatement pst;
+//           
+
+            Connection conn = con.getConnection();
+            JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\51934\\Documents\\GitHub\\ProyectoClinica\\Clinica\\src\\main\\java\\Modelo\\DiagnosticoReport.jrxml");
+            String query = "SELECT \n"
+                    + "    c.IDCita, \n"
+                    + "    c.Fecha, \n"
+                    + "    c.Turno, \n"
+                    + "    c.NumeroTurno, \n"
+                    + "    c.Estado, \n"
+                    + "    c.Detalle, \n"
+                    + "    c.Diagnostico, \n"
+                    + "    p.DNI AS dniPaciente, \n"
+                    + "    CONCAT(p.Nombre, ' ', p.Apellido) AS nombreCompletoPaciente, \n"
+                    + "    d.DNI_fk AS dniDoctor, \n"
+                    + "    CONCAT(p2.Nombre, ' ', p2.Apellido) AS nombreDoctor, \n"
+                    + "    d.Especialidad\n"
+                    + "FROM \n"
+                    + "    cita c\n"
+                    + "JOIN \n"
+                    + "    paciente pa ON c.IDPaciente_fk2 = pa.IDPaciente\n"
+                    + "JOIN \n"
+                    + "    persona p ON pa.DNI_fk = p.DNI\n"
+                    + "JOIN \n"
+                    + "    doctor d ON c.IDDoctor_fk = d.IDDoctor\n"
+                    + "JOIN \n"
+                    + "    persona p2 ON d.DNI_fk = p2.DNI\n"
+                    + "WHERE \n"
+                    + "    c.IDCita ="+idCita+";";
+            JRDesignQuery updateQuery = new JRDesignQuery();
+            updateQuery.setText(query);
+
+            jdesign.setQuery(updateQuery);
+
+            JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+            JasperPrint jprint = JasperFillManager.fillReport(jreport, null, conn);
+
+            // JasperViewer.viewReport(jprint);
+            JasperViewer viewer = new JasperViewer(jprint, false);
+            viewer.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+            viewer.setVisible(true);
+
+            Conexion.close(conn);
+
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlVentanaDoctor.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (JRException ex) {
+            Logger.getLogger(CtrlVentanaDoctor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -485,7 +554,7 @@ public class CtrlVentanaDoctor {
                             "¿Está seguro de enviar este diagnóstico?",
                             "Confirmar Envío",
                             JOptionPane.YES_NO_OPTION);
-                    
+
                     if (confirm == JOptionPane.YES_OPTION) {
                         String diagnostico = ventanaDoctor.diagnosticoText.getText();
                         int idCita = (int) ventanaDoctor.tablaCitas.getValueAt(selectedRow, 0); // Suponiendo que la ID está en la primera columna
@@ -511,6 +580,8 @@ public class CtrlVentanaDoctor {
                                 "Éxito",
                                 JOptionPane.INFORMATION_MESSAGE);
 
+                        //PDF
+                        generarPdf(idCita);
                         // Recargar citas después de actualizar
                         cargarCitas();
                         ventanaDoctor.diagnosticoText.setText("");
@@ -525,8 +596,7 @@ public class CtrlVentanaDoctor {
                 int selectedRow = ventanaDoctor.tablaCitas.getSelectedRow();
                 if (selectedRow != -1) {
                     int idCita = (int) ventanaDoctor.tablaCitas.getValueAt(selectedRow, 0);
-                    // Lógica para generar el voucher usando JasperReports o cualquier otro sistema
-                    // Aquí deberías implementar la funcionalidad para generar el voucher
+                    generarPdf(idCita);
                     System.out.println("Generar voucher para la cita ID: " + idCita);
                 }
             }
@@ -537,13 +607,27 @@ public class CtrlVentanaDoctor {
             public void actionPerformed(ActionEvent e) {
                 int selectedRow = ventanaDoctor.tablaCitas.getSelectedRow();
                 if (selectedRow != -1) {
-                    int idPaciente = (int) ventanaDoctor.tablaCitas.getValueAt(selectedRow, 1);
-                    // Lógica para mostrar el historial médico del paciente
-                    // Aquí deberías implementar la funcionalidad para mostrar el historial médico
-                    System.out.println("Mostrar historial médico para el paciente ID: " + idPaciente);
+                    String dni = ventanaDoctor.tablaCitas.getValueAt(selectedRow, 2).toString();
+
+                    PacienteDAO pacienteDAO = new PacienteDAO();
+                    if (!dni.isEmpty()) {
+                        Paciente paciente = pacienteDAO.obtenerPacienteRegistrado(dni);
+                        if (paciente != null) {
+                            HistorialMedicoJDialog historialDialog = new HistorialMedicoJDialog(null, true);
+                            HistorialMedicoDAO historialDAO = new HistorialMedicoDAO();
+                            CtrlHistorialMedico ctrlHistorial = new CtrlHistorialMedico(historialDialog, historialDAO, paciente);
+                            ctrlHistorial.init();
+                            historialDialog.setVisible(true);
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Paciente no encontrado");
+                        }
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Ingrese un DNI válido");
+                    }
                 }
             }
         });
-    }
-}
 
+    }
+
+}
