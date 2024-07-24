@@ -3,6 +3,7 @@ D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Controlador\CtrlTrabajador.ja
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Controlador\CtrlModificarPaciente.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Controlador\CtrlPacienteRegistrado.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\HistorialMedicoJDialog.java
+D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\Reports.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Modelo\DAO\EmailSender.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Modelo\Persona.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Modelo\HorarioDoctor.java
@@ -15,12 +16,16 @@ D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\VentanaRegistroCitaJDia
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\VentanaAdministrador.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\VentanaDoctor.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Controlador\CtrlPrincipal.java
+D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\Doctores.java
+D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\Principal.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Conexion\Conexion.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Modelo\DAO\HorarioDoctorDAO.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\ModificarPacienteJDialog.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Controlador\CtrlRegistrarPacienteInvitado.java
+D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\Users.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Controlador\CtrlRegistrarCita.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Modelo\DAO\TrabajadorDAO.java
+D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\Citas.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\VentanaTrabajador.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\RegistrarNuevoPacienteJdialog.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Modelo\DAO\DoctorDAO.java
@@ -28,6 +33,7 @@ D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Modelo\Doctor.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Modelo\Pago.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Modelo\Trabajador.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Modelo\DAO\HistorialMedicoDAO.java
+D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\Pacientes.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\VentanaPago.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Vista\VentanaPacienteRegistrado.java
 D:\Proyecto2\ProyectoClinica\Clinica\src\main\java\Modelo\CitaTrabajador.java

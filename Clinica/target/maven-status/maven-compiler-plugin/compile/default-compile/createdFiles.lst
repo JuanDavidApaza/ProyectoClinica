@@ -12,11 +12,15 @@ Vista\VentanaDoctor$1.class
 Vista\RegistrarNuevoPacienteJdialog$4.class
 Vista\VentanaRegistroCitaJDialog$2$1.class
 Controlador\CtrlVentanaDoctor$1.class
+Vista\Citas.class
+Vista\Users.class
+Vista\VentanaAdministrador$6.class
 Controlador\CtrlVentanaDoctor$4.class
 Vista\ModificarPacienteJDialog$2.class
 Vista\HistorialMedicoJDialog$2.class
 Vista\ValidarDatosReniec$2.class
 Modelo\DAO\HorarioDoctorDAO.class
+Vista\VentanaAdministrador$3.class
 Controlador\CtrlVentanaDoctor.class
 Modelo\DAO\DoctorDAO.class
 Vista\ModificarPacienteJDialog$3.class
@@ -32,7 +36,9 @@ Modelo\Persona.class
 Vista\ValidarDatosReniec.class
 Modelo\Trabajador.class
 Controlador\LoginController.class
+Vista\Doctores.class
 Vista\VentanaPago$3.class
+Vista\Reports.class
 Modelo\Pago.class
 Vista\VentanaPacienteRegistrado$3.class
 Modelo\DAO\TrabajadorDAO.class
@@ -42,6 +48,7 @@ Vista\VentanaPago.class
 Controlador\CtrlPrincipal.class
 Modelo\HistorialMedico.class
 Modelo\HorarioDoctor.class
+Vista\VentanaAdministrador$4.class
 Vista\VentanaTrabajador$2.class
 Controlador\CtrlRegistrarCita.class
 Vista\RegistrarPacienteInvitadoJdialog$5.class
@@ -54,7 +61,9 @@ Vista\HistorialMedicoJDialog$3$1.class
 Vista\VentanaPacienteRegistrado$2.class
 Vista\RegistrarNuevoPacienteJdialog$5.class
 Modelo\DAO\EmailSender.class
+Vista\Principal.class
 Vista\VentanaRegistroCitaJDialog.class
+Vista\Pacientes.class
 Vista\RegistrarNuevoPacienteJdialog$2.class
 Vista\VentanaDoctor.class
 Vista\ModificarPacienteJDialog$1.class
@@ -62,6 +71,8 @@ Controlador\CtrlHistorialMedico$3.class
 Controlador\CtrlTrabajador.class
 Vista\ModificarPacienteJDialog$4$1.class
 Vista\ValidarDatosReniec$1.class
+Vista\VentanaAdministrador$5.class
+Vista\VentanaAdministrador$2.class
 Vista\RegistrarPacienteInvitadoJdialog$3.class
 Modelo\DAO\EmailSender$1.class
 Controlador\CtrlHistorialMedico.class
@@ -88,6 +99,7 @@ Vista\VentanaTrabajador.class
 Controlador\CtrlHistorialMedico$2.class
 Controlador\CtrlModificarPaciente.class
 Modelo\Cita.class
+Vista\VentanaAdministrador$7.class
 Controlador\CtrlVentanaDoctor$2.class
 Vista\RegistrarPacienteInvitadoJdialog$2.class
 Modelo\DAO\CitaDAO.class
