@@ -85,7 +85,7 @@ public class CtrlRegistrarNuevoPaciente {
     }
 
     private void buscarDatos() {
-        String token = "cGVydWRldnMucHJvZHVjdGlvbi5maXRjb2RlcnMuNjY3NjVjYTZkNDFiOTQxMTE0OGI1ODY2";
+        String token = "cGVydWRldnMucHJvZHVjdGlvbi5maXRjb2RlcnMuNjZhMTljOGZkNDFiOTQxMTE0OGI1OTMz";
         String leerdni = registrarNuevoPacienteJdialog.cajaDNI.getText();
         String enlace = "https://api.perudevs.com/api/v1/dni/complete?document=" + leerdni + "&key=" + token;
 

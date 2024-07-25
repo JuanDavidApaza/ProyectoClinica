@@ -91,7 +91,7 @@ public class ValidarDatosReniec extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnconsultarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnconsultarActionPerformed
-        String token = "cGVydWRldnMucHJvZHVjdGlvbi5maXRjb2RlcnMuNjY3NjVjYTZkNDFiOTQxMTE0OGI1ODY2";
+        String token = "cGVydWRldnMucHJvZHVjdGlvbi5maXRjb2RlcnMuNjZhMTljOGZkNDFiOTQxMTE0OGI1OTMz";
         String leerdni = txtdni.getText();
         String enlace = "https://api.perudevs.com/api/v1/dni/complete?document=" + leerdni + "&key=" + token;
 

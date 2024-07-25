@@ -226,7 +226,7 @@ public class CtrlPago {
                     // Enviar correo electrónico de confirmación de pago
                     EmailSender.enviarEmailPago(cita, pago, paciente);
 
-                    JOptionPane.showMessageDialog(vista, "Pago confirmado correctamente y email enviado al administrador.");
+                    JOptionPane.showMessageDialog(vista, "Pago confirmado correctamente y email enviado.");
                     cancelarPago();
                     
                     refrescarTablaCitas();

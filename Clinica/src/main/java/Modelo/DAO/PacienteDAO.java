@@ -93,6 +93,21 @@ public class PacienteDAO {
         }
         return false;
     }
+    public boolean existeDNIRegistrado(String dni) {
+        String sql = "SELECT COUNT(*) FROM paciente WHERE DNI_fk = ? AND Tipo = 'Registrado' ";
+        try {
+            PreparedStatement statement = conexion.prepareStatement(sql);
+            statement.setString(1, dni);
+
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1) > 0;
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(PacienteDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return false;
+    }
 
     public Paciente obtenerPacientePorDNI(String dni) {
         String sql = "SELECT p.DNI, p.Nombre, p.Apellido, p.Direccion, p.Telefono, p.Email, p.Sexo, p.Edad, p.Pais, pa.IDPaciente, pa.Tipo " +

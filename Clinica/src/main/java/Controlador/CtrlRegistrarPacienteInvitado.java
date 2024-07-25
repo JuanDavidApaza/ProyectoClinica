@@ -1,8 +1,13 @@
 package Controlador;
 
+import Conexion.Conexion;
+import Modelo.DAO.CitaDAO;
+import Modelo.DAO.DoctorDAO;
+import Modelo.DAO.HorarioDoctorDAO;
 import Modelo.DAO.PacienteDAO;
 import Modelo.Paciente;
 import Vista.RegistrarPacienteInvitadoJdialog;
+import Vista.VentanaRegistroCitaInvitado;
 
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
@@ -11,6 +16,10 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 public class CtrlRegistrarPacienteInvitado {
@@ -69,7 +78,7 @@ public class CtrlRegistrarPacienteInvitado {
     }
 
     private void buscarDatos() {
-        String token = "cGVydWRldnMucHJvZHVjdGlvbi5maXRjb2RlcnMuNjY3NjVjYTZkNDFiOTQxMTE0OGI1ODY2";
+        String token = "cGVydWRldnMucHJvZHVjdGlvbi5maXRjb2RlcnMuNjZhMTljOGZkNDFiOTQxMTE0OGI1OTMz";
         String leerdni = registrarPacienteInvitadoJdialog.cajaDNI.getText();
         String enlace = "https://api.perudevs.com/api/v1/dni/complete?document=" + leerdni + "&key=" + token;
 
@@ -146,6 +155,23 @@ public class CtrlRegistrarPacienteInvitado {
         } else {
             JOptionPane.showMessageDialog(null, "Error, verificar datos ");
         }
+
+        //Abrir
+        VentanaRegistroCitaInvitado ventanaRegistroCitaInvitado = new VentanaRegistroCitaInvitado(null, true);
+        DoctorDAO doctorDAO = new DoctorDAO();
+        ventanaRegistroCitaInvitado.setVisible(true);
+        CitaDAO citaDAO = new CitaDAO();
+        Connection connection;
+        try {
+            connection = Conexion.getConnection();
+            HorarioDoctorDAO horarioDoctorDAO = new HorarioDoctorDAO(connection);
+            new CtrlRegistrarCitaInvitado(ventanaRegistroCitaInvitado, citaDAO, pacienteDAO, horarioDoctorDAO, paciente, doctorDAO);
+            ventanaRegistroCitaInvitado.setVisible(true);
+            registrarPacienteInvitadoJdialog.dispose();
+        } catch (SQLException ex) {
+            Logger.getLogger(CtrlRegistrarPacienteInvitado.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
     }
 
     private void cancelarRegistro() {

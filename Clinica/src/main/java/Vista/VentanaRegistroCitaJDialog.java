@@ -36,7 +36,7 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
     for (ActionListener al : btnCancelar.getActionListeners()) {
         btnCancelar.removeActionListener(al);
     }
-    btnCancelar.addActionListener(e -> controlador.limpiarDatosPaciente());
+    btnCancelar.addActionListener(e -> controlador.limpiarDatosPacientei());
 }
 
 
@@ -51,7 +51,7 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
         fechaCita.setDate(null);
         comboTurno.setSelectedIndex(0);
         comboDoctor.setSelectedIndex(0);
-        textAreaUltimaCita.setText("");
+        //textAreaUltimaCita.setText("");
     }
 
     public void mostrarMensaje(String mensaje) {
@@ -87,9 +87,6 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
         etiquetaNombrePaciente = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         btnMostrarHistorial = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        textAreaUltimaCita = new javax.swing.JTextArea();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -133,14 +130,6 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
         btnMostrarHistorial.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         btnMostrarHistorial.setText("Mostrar Historial");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("ÚLTIMA CITA:");
-
-        textAreaUltimaCita.setColumns(20);
-        textAreaUltimaCita.setRows(5);
-        jScrollPane1.setViewportView(textAreaUltimaCita);
-
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Sexo:");
@@ -183,7 +172,7 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(etiquetaApellidoPaciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jLabel4)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(etiquetaSexoPersona)
@@ -199,20 +188,15 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
                                 .addComponent(jLabel2))
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jLabel3))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(jLabel8)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(etiquetaDNIPersona))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(45, 45, 45)
-                                .addComponent(btnMostrarHistorial)))
-                        .addGap(0, 6, Short.MAX_VALUE)))
+                                .addComponent(etiquetaDNIPersona)))
+                        .addGap(0, 69, Short.MAX_VALUE)))
                 .addContainerGap())
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addGap(39, 39, 39)
+                .addComponent(btnMostrarHistorial)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -238,13 +222,9 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(etiquetaDNIPersona)
                     .addComponent(jLabel8))
-                .addGap(18, 18, 18)
+                .addGap(64, 64, 64)
                 .addComponent(btnMostrarHistorial, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(248, Short.MAX_VALUE))
         );
 
         jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 220, 500));
@@ -375,7 +355,6 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -384,9 +363,7 @@ public class VentanaRegistroCitaJDialog extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     public javax.swing.JTextArea textAreaDetallesCita;
-    public javax.swing.JTextArea textAreaUltimaCita;
     // End of variables declaration//GEN-END:variables
 }

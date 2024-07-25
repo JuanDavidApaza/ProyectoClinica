@@ -10,7 +10,7 @@ import Modelo.Doctor;
 import Modelo.HorarioDoctor;
 import Modelo.Paciente;
 import Vista.HistorialMedicoJDialog;
-import Vista.VentanaRegistroCitaJDialog;
+import Vista.VentanaRegistroCitaInvitado;
 import com.toedter.calendar.JDateChooser;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -22,9 +22,9 @@ import java.awt.event.ActionListener;
 import java.util.Calendar;
 import javax.swing.JOptionPane;
 
-public class CtrlRegistrarCita {
+public class CtrlRegistrarCitaInvitado {
 
-    private VentanaRegistroCitaJDialog vista;
+    private VentanaRegistroCitaInvitado vista;
     private CitaDAO citaDAO;
     private PacienteDAO pacienteDAO;
     private HorarioDoctorDAO horarioDoctorDAO;
@@ -33,7 +33,7 @@ public class CtrlRegistrarCita {
     private PropertyChangeListener fechaCitaListener;
     private ActionListener turnoListener;
 
-    public CtrlRegistrarCita(VentanaRegistroCitaJDialog vista, CitaDAO citaDAO, PacienteDAO pacienteDAO, HorarioDoctorDAO horarioDoctorDAO, Paciente paciente, DoctorDAO doctorDAO) {
+    public CtrlRegistrarCitaInvitado(VentanaRegistroCitaInvitado vista, CitaDAO citaDAO, PacienteDAO pacienteDAO, HorarioDoctorDAO horarioDoctorDAO, Paciente paciente, DoctorDAO doctorDAO) {
         this.vista = vista;
         this.citaDAO = citaDAO;
         this.pacienteDAO = pacienteDAO;
@@ -59,11 +59,11 @@ public class CtrlRegistrarCita {
     }
 
     private void cargarDatosPaciente() {
-        vista.etiquetaNombrePaciente.setText(paciente.getNombre());
-        vista.etiquetaApellidoPaciente.setText(paciente.getApellido());
-        vista.etiquetaSexoPersona.setText(paciente.getSexo());
-        vista.etiquetaEdadPersona.setText(String.valueOf(paciente.getEdad()));
-        vista.etiquetaDNIPersona.setText(String.valueOf(paciente.getDni()));
+//        vista.etiquetaNombrePaciente.setText(paciente.getNombre());
+//        vista.etiquetaApellidoPaciente.setText(paciente.getApellido());
+//        vista.etiquetaSexoPersona.setText(paciente.getSexo());
+//        vista.etiquetaEdadPersona.setText(String.valueOf(paciente.getEdad()));
+//        vista.etiquetaDNIPersona.setText(String.valueOf(paciente.getDni()));
         // ultima cita
         //vista.textAreaUltimaCita.setEnabled(false);
     }
@@ -114,11 +114,10 @@ public class CtrlRegistrarCita {
     }
 
     public void limpiarDatosPaciente() {
-        vista.etiquetaNombrePaciente.setText("");
+       // vista.etiquetaNombrePaciente.setText("");
     }
-    
-    public void limpiarDatosPacientei() {
-        vista.dispose();
+     public void limpiarDatosPacientei() {
+       vista.dispose();
     }
 
     public void mostrarHistorialMedico() {
