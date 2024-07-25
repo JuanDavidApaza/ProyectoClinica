@@ -18,6 +18,18 @@ import java.awt.event.ActionListener;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
+import net.sf.jasperreports.engine.JRException;
+import net.sf.jasperreports.engine.JasperCompileManager;
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.design.JRDesignQuery;
+import net.sf.jasperreports.engine.design.JasperDesign;
+import net.sf.jasperreports.engine.xml.JRXmlLoader;
+import net.sf.jasperreports.view.JasperViewer;
 
 public class CtrlPago {
 
@@ -227,6 +239,46 @@ public class CtrlPago {
                     EmailSender.enviarEmailPago(cita, pago, paciente);
 
                     JOptionPane.showMessageDialog(vista, "Pago confirmado correctamente y email enviado.");
+                    
+                    
+                    ///PDF
+                    try {
+                    Conexion con = new Conexion();
+                    
+//           
+
+                    Connection conn = con.getConnection();
+                    JasperDesign jdesign = JRXmlLoader.load("C:\\Users\\51934\\Documents\\GitHub\\ProyectoClinica\\Clinica\\src\\main\\java\\Modelo\\VoucherReport.jrxml");
+                    String query = "SELECT c.*, pd.Nombre AS NombreDoctor, pd.Apellido AS ApellidoDoctor \n" +
+"                FROM cita c \n" +
+"                JOIN doctor d ON c.IDDoctor_fk = d.IDDoctor \n" +
+"                JOIN persona pd ON d.DNI_fk = pd.DNI \n" +
+"                WHERE c.IDCita ="+idCita
+                            + ";";
+                    JRDesignQuery updateQuery = new JRDesignQuery();
+                    updateQuery.setText(query);
+
+                    jdesign.setQuery(updateQuery);
+
+                    JasperReport jreport = JasperCompileManager.compileReport(jdesign);
+                    JasperPrint jprint = JasperFillManager.fillReport(jreport, null, conn);
+
+                    // JasperViewer.viewReport(jprint);
+                    JasperViewer viewer = new JasperViewer(jprint, false);
+                    viewer.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+                    viewer.setVisible(true);
+                    viewer.toFront();
+
+                    Conexion.close(conn);
+
+                } catch (SQLException ex) {
+                    Logger.getLogger(CtrlVentanaDoctor.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (JRException ex) {
+                    Logger.getLogger(CtrlVentanaDoctor.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                    
+                    
+                    
                     cancelarPago();
                     
                     refrescarTablaCitas();
